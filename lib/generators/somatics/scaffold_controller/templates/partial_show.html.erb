@@ -1,0 +1,31 @@
+<table class="attributes" width="100%">
+<tbody> 
+  <tr>
+		<td colspan="2"><br/><h3><%%= "#{<%= class_name %>.human_name} #{t('Information')}" %></h3></td>
+	</tr>
+<% if options[:admin_authenticated] || options[:authenticated] -%>
+	<tr>
+	  <td><b><%%= <%= class_name %>.human_attribute_name(:login) %></b></td>
+	  <td><%%=h <%= singular_name %>.login %></td>
+	</tr>
+	<tr>
+	  <td><b><%%= <%= class_name %>.human_attribute_name(:name) %></b></td>
+	  <td><%%=h <%= singular_name %>.name %></td>
+	</tr>
+	<tr>
+	  <td><b><%%= <%= class_name %>.human_attribute_name(:email) %></b></td>
+	  <td><%%=h <%= singular_name %>.email %></td>
+	</tr>
+	<tr>
+	  <td><b><%%= <%= class_name %>.human_attribute_name(:created_at) %></b></td>
+	  <td><%%=h <%= singular_name %>.created_at %></td>
+	</tr>
+<% end -%>
+<% for attribute in attributes -%>
+	<tr>
+	  <td><b><%%= <%= class_name %>.human_attribute_name(:<%= attribute.name %>) %></b></td>
+	  <td><%%=h <%= singular_name %>.<%= attribute.name %> %></td>
+	</tr>
+<% end -%>
+</tbody>
+</table>

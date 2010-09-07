@@ -1,83 +1,140 @@
-class <%= controller_class_name %>Controller < ApplicationController
-  # GET <%= route_url %>
-  # GET <%= route_url %>.xml
-  def index
-    @<%= plural_table_name %> = <%= orm_class.all(class_name) %>
+class <%=namespace_class%>::<%= controller_class_name %>Controller < Admin::AdminController
+  
+  # Redmine Filters
+  # available_filters :id,  {:name => 'ID', :type => :integer, :order => 1}
+  <% attributes.each_with_index do |attribute, index| -%>
+  # available_filters :<%=attribute.name%>,  {:name => '<%=attribute.name.humanize%>', :type => :<%=attribute.type%>, :order => <%=index%>}
+  <% end -%>
 
+  # default_filter :id
+  <% attributes.each do |attribute| -%>
+  # default_filter :<%=attribute.name%>
+  <% end %>
+
+  # GET /<%= plural_table_name %>
+  # GET /<%= plural_table_name %>.xml
+  def index
+    @fields = <%= attributes.collect {|attribute| attribute.name}.inspect %>
+    @headers = <%= attributes.collect {|attribute| attribute.name.humanize}.inspect %>
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @<%= plural_table_name %> }
+      format.html {
+        @<%= plural_table_name %> = <%= class_name %>.paginate(:page => params[:<%= plural_table_name %>_page], :conditions => query_statement, :order => (params[:<%= singular_name %>_sort].gsub('_reverse', ' DESC') unless params[:<%= singular_name %>_sort].blank?))
+      }
+      format.xml { 
+        @<%= plural_table_name %> = <%= class_name %>.all(:conditions => query_statement)
+      }
+      format.csv {
+        @<%= plural_table_name %> = <%= class_name %>.all(:conditions => query_statement)
+        csv_string = FasterCSV.generate do |csv|
+        	csv << @headers
+        	@<%= plural_table_name %>.each do |<%= singular_name %>|
+        	  csv << @fields.collect { |f| <%= singular_name %>.send(f) }        	    
+      	  end
+      	end
+      	send_data csv_string, :type => 'text/csv; charset=iso-8859-1; header=present', 
+  				:disposition => "attachment; filename=<%= plural_table_name %>.csv"
+      }
+      format.xls {
+        @<%= plural_table_name %> = <%= class_name %>.all(:conditions => query_statement)
+        render :xls => @<%= plural_table_name %>
+      }
+      format.pdf {
+        params[:fields] = @fields
+        @<%= plural_table_name %> = <%= class_name %>.all(:conditions => query_statement)
+        prawnto :prawn => {:text_options => { :wrap => :character }, :page_layout => :portrait }
+      }
     end
   end
 
-  # GET <%= route_url %>/1
-  # GET <%= route_url %>/1.xml
+  # GET /<%= plural_table_name %>/1
+  # GET /<%= plural_table_name %>/1.xml
   def show
-    @<%= singular_table_name %> = <%= orm_class.find(class_name, "params[:id]") %>
+    @<%= file_name %> = <%= class_name %>.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @<%= singular_table_name %> }
+      format.xml  { render :xml => @<%= file_name %> }
     end
   end
 
-  # GET <%= route_url %>/new
-  # GET <%= route_url %>/new.xml
+  # GET /<%= plural_table_name %>/new
+  # GET /<%= plural_table_name %>/new.xml
   def new
-    @<%= singular_table_name %> = <%= orm_class.build(class_name) %>
+    @<%= file_name %> = <%= class_name %>.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @<%= singular_table_name %> }
+      format.xml  { render :xml => @<%= file_name %> }
     end
   end
 
-  # GET <%= route_url %>/1/edit
+  # GET /<%= plural_table_name %>/1/edit
   def edit
-    @<%= singular_table_name %> = <%= orm_class.find(class_name, "params[:id]") %>
+    @<%= file_name %> = <%= class_name %>.find(params[:id])
   end
 
-  # POST <%= route_url %>
-  # POST <%= route_url %>.xml
+  # POST /<%= plural_table_name %>
+  # POST /<%= plural_table_name %>.xml
   def create
-    @<%= singular_table_name %> = <%= orm_class.build(class_name, "params[:#{singular_table_name}]") %>
+    @<%= file_name %> = <%= class_name %>.new(params[:<%= file_name %>])
 
     respond_to do |format|
-      if @<%= orm_instance.save %>
-        format.html { redirect_to(@<%= singular_table_name %>, :notice => '<%= human_name %> was successfully created.') }
-        format.xml  { render :xml => @<%= singular_table_name %>, :status => :created, :location => @<%= singular_table_name %> }
+      if @<%= file_name %>.save
+        flash[:notice] = '<%= class_name %> was successfully created.'
+        format.html { redirect_to(params[:return_to] || [:admin,@<%= file_name %>]) }
+        format.xml  { render :xml => @<%= file_name %>, :status => :created, :location => @<%= file_name %> }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @<%= orm_instance.errors %>, :status => :unprocessable_entity }
+        format.xml  { render :xml => @<%= file_name %>.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # PUT <%= route_url %>/1
-  # PUT <%= route_url %>/1.xml
+  # PUT /<%= plural_table_name %>/1
+  # PUT /<%= plural_table_name %>/1.xml
   def update
-    @<%= singular_table_name %> = <%= orm_class.find(class_name, "params[:id]") %>
+    @<%= file_name %> = <%= class_name %>.find(params[:id])
 
     respond_to do |format|
-      if @<%= orm_instance.update_attributes("params[:#{singular_table_name}]") %>
-        format.html { redirect_to(@<%= singular_table_name %>, :notice => '<%= human_name %> was successfully updated.') }
+      if @<%= file_name %>.update_attributes(params[:<%= file_name %>])
+        flash[:notice] = '<%= class_name %> was successfully updated.'
+        format.html { redirect_to([:admin,@<%= file_name %>]) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @<%= orm_instance.errors %>, :status => :unprocessable_entity }
+        format.xml  { render :xml => @<%= file_name %>.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # DELETE <%= route_url %>/1
-  # DELETE <%= route_url %>/1.xml
+  # DELETE /<%= plural_table_name %>/1
+  # DELETE /<%= plural_table_name %>/1.xml
   def destroy
-    @<%= singular_table_name %> = <%= orm_class.find(class_name, "params[:id]") %>
-    @<%= orm_instance.destroy %>
-
+    @<%= file_name %> = <%= class_name %>.find(params[:id])
+    @<%= file_name %>.destroy
+    flash[:notice] = '<%= class_name %> was successfully deleted.'
     respond_to do |format|
-      format.html { redirect_to(<%= index_helper %>_url) }
+      format.html { redirect_to(admin_<%= plural_table_name %>_url) }
       format.xml  { head :ok }
     end
   end
+  
+  # def bulk
+  #   unless params[:ids].blank?
+  #     <%= plural_table_name %> = <%= class_name %>.find(params[:ids])
+  #     success = true
+  #     params[:<%= file_name %>].delete_if {|k, v| v.blank?}
+  #     <%= plural_table_name %>.each do |<%= file_name %>|
+  #       success &&= <%= file_name %>.update_attributes(params[:<%= file_name %>])
+  #     end
+  #     success ? flash[:notice] = '<%= class_name.pluralize %> were successfully updated.' : flash[:error] = 'Bulk Update Failed.'
+  #   else
+  #     flash[:error] = 'No <%= class_name %> record is selected.'
+  #   end
+  #   
+  #   respond_to do |format|
+  #     format.html { redirect_to(admin_<%= plural_table_name %>_path) }
+  #     format.xml  { head :ok }
+  #   end
+  # end
 end
