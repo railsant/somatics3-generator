@@ -27,6 +27,28 @@ Gem::Specification.new do |s|
      "VERSION",
      "bin/somatics",
      "lib/generators/somatics.rb",
+     "lib/generators/somatics/authenticated/authenticated_generator.rb",
+     "lib/generators/somatics/authenticated/templates/_model_partial.html.erb",
+     "lib/generators/somatics/authenticated/templates/activation.erb",
+     "lib/generators/somatics/authenticated/templates/authenticated_system.rb",
+     "lib/generators/somatics/authenticated/templates/authenticated_test_helper.rb",
+     "lib/generators/somatics/authenticated/templates/controller.rb",
+     "lib/generators/somatics/authenticated/templates/helper.rb",
+     "lib/generators/somatics/authenticated/templates/login.html.erb",
+     "lib/generators/somatics/authenticated/templates/mailer.rb",
+     "lib/generators/somatics/authenticated/templates/migration.rb",
+     "lib/generators/somatics/authenticated/templates/model.rb",
+     "lib/generators/somatics/authenticated/templates/observer.rb",
+     "lib/generators/somatics/authenticated/templates/session_helper.rb",
+     "lib/generators/somatics/authenticated/templates/sessions_controller.rb",
+     "lib/generators/somatics/authenticated/templates/signup.html.erb",
+     "lib/generators/somatics/authenticated/templates/signup_notification.erb",
+     "lib/generators/somatics/authenticated/templates/site_keys.rb",
+     "lib/generators/somatics/authenticated/templates/test/mailer_test.rb",
+     "lib/generators/somatics/authenticated/templates/test/model_functional_test.rb",
+     "lib/generators/somatics/authenticated/templates/test/sessions_functional_test.rb",
+     "lib/generators/somatics/authenticated/templates/test/unit_test.rb",
+     "lib/generators/somatics/authenticated/templates/test/users.yml",
      "lib/generators/somatics/helper/helper_generator.rb",
      "lib/generators/somatics/install/install_generator.rb",
      "lib/generators/somatics/install/templates/config/locales/somatics_en.yml",
@@ -162,12 +184,14 @@ Gem::Specification.new do |s|
      "lib/generators/somatics/scaffold_controller/templates/view_show.html.erb",
      "lib/somatics3-generators.rb",
      "somatics3-generators.gemspec",
+     "templates/somatics.rb",
      "test/helper.rb",
      "test/test_somatics3-generators.rb"
   ]
   s.homepage = %q{http://github.com/inspiresynergy/somatics3-generators}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
+  s.rubyforge_project = %q{somatics3}
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{Somatics - Adminable Resource generators}
   s.test_files = [

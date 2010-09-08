@@ -4,6 +4,11 @@
 # 
 # repo_entered = ask 'Type your repository for the project (SVN), followed by [ENTER]:'
 
+gem 'will_paginate', :version => "~> 3.0.pre2"
+gem 'prawn', :version => '0.6.3'
+gem 'somatics3-generators'
+gem 'json'
+
 plugin 'action_mailer_optional_tls',
   :git => 'git://github.com/collectiveidea/action_mailer_optional_tls.git'
 plugin 'faster_csv',
@@ -13,7 +18,8 @@ plugin 'prawnto',
 plugin 'redmine_filter',
   :git => 'git://github.com/inspiresynergy/redmine_filter.git'
 plugin 'restful_authentication',
-  :git => 'git://github.com/technoweenie/restful-authentication.git'
+  :git => 'git://github.com/Satish/restful-authentication.git'
+  # :git => 'git://github.com/technoweenie/restful-authentication.git'
 # plugin 'somatics_generator',
 #   :git => 'git://github.com/inspiresynergy/somatics_generator.git'
 # theme_support break my rails 2.3.5 
@@ -24,9 +30,6 @@ plugin 'tinymce_hammer',
   :git => 'git://github.com/trevorrowe/tinymce_hammer.git'
 plugin 'to_xls',
   :git => 'git://github.com/arydjmal/to_xls.git'
-
-gem 'will_paginate', :version => "~> 3.0.pre2"
-gem 'prawn', :version => '0.6.3'
 
 rakefile "setup_svn.rake" do
   <<-TASK
@@ -85,6 +88,7 @@ rakefile "setup_svn.rake" do
 end
 
 # rake "gems:install", :sudo => true
+generate "somatics:install"
 # 
 # generate "tinymce_installation"
 # generate "admin_controllers"

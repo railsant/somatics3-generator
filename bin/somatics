@@ -15,4 +15,7 @@ path = args.shift.strip rescue '.'
 a = File.expand_path(path)
 template = File.join(template_path,'somatics.rb')
 
-puts "#{path} #{a} #{args.join(',')} #{template}"
+# puts "#{path} #{a} #{args.join(',')} #{template}"
+system "rake rails:template LOCATION=#{template}"
+
+exit

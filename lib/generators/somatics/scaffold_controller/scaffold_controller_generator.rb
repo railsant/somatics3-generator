@@ -38,7 +38,9 @@ module Somatics
       end
       
       def add_header_menu_tab
-        append_file File.join('app/views/admin/shared', "_menu.html.erb"), "<li><%= link_to '#{file_name.humanize}', '/admin/#{file_name}', :class => (match_controller?('#{controller_file_name}'))  ? 'selected' : ''%></li>\n"
+        look_for = "<li><%= link_to '#{file_name.humanize}', '/admin/#{file_name}', :class => (match_controller?('#{controller_file_name}'))  ? 'selected' : ''%></li>\n"
+        gsub_file File.join('app/views/admin/shared', "_menu.html.erb"), look_for, ''
+        append_file File.join('app/views/admin/shared', "_menu.html.erb"), look_for
       end
       
       def create_locales_files
