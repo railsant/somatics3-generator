@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{somatics3-generators}
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["tkwong"]
-  s.date = %q{2010-09-07}
+  s.date = %q{2010-09-08}
   s.default_executable = %q{somatics}
   s.description = %q{Somatics 3 generators is used to generate a resource with skeleton admin panel}
   s.email = %q{tkwong@inspiresynergy.com}
@@ -19,9 +19,13 @@ Gem::Specification.new do |s|
      "README.rdoc"
   ]
   s.files = [
-    "LICENSE",
+    ".document",
+     ".gitignore",
+     "LICENSE",
      "README.rdoc",
+     "Rakefile",
      "VERSION",
+     "bin/somatics",
      "lib/generators/somatics.rb",
      "lib/generators/somatics/helper/helper_generator.rb",
      "lib/generators/somatics/install/install_generator.rb",
@@ -156,7 +160,10 @@ Gem::Specification.new do |s|
      "lib/generators/somatics/scaffold_controller/templates/view_index.html.erb",
      "lib/generators/somatics/scaffold_controller/templates/view_new.html.erb",
      "lib/generators/somatics/scaffold_controller/templates/view_show.html.erb",
-     "lib/somatics3-generators.rb"
+     "lib/somatics3-generators.rb",
+     "somatics3-generators.gemspec",
+     "test/helper.rb",
+     "test/test_somatics3-generators.rb"
   ]
   s.homepage = %q{http://github.com/inspiresynergy/somatics3-generators}
   s.rdoc_options = ["--charset=UTF-8"]
