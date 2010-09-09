@@ -11,7 +11,8 @@ begin
     gem.homepage = "http://github.com/inspiresynergy/somatics3-generators"
     gem.authors = ["Benjamin Wong"]
     # gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
-    gem.rdoc_options << "--exclude 'lib/**/templates/*'"
+    gem.rdoc_options += FileList['lib/**/templates/*'].to_a.collect{|f| "--exclude=#{f}" }.join('=').split('=')
+    # gem.rdoc_options << "--exclude='lib/**/templates/*'"
     gem.rubyforge_project = 'somatics3'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
