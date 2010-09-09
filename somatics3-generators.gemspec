@@ -43,7 +43,6 @@ Gem::Specification.new do |s|
      "lib/generators/somatics/authenticated/templates/sessions_controller.rb",
      "lib/generators/somatics/authenticated/templates/signup.html.erb",
      "lib/generators/somatics/authenticated/templates/signup_notification.erb",
-     "lib/generators/somatics/authenticated/templates/site_keys.rb",
      "lib/generators/somatics/authenticated/templates/test/mailer_test.rb",
      "lib/generators/somatics/authenticated/templates/test/model_functional_test.rb",
      "lib/generators/somatics/authenticated/templates/test/sessions_functional_test.rb",

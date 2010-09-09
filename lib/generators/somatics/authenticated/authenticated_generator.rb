@@ -38,6 +38,8 @@ module Somatics
       end
       
       def generate_sessions_controller
+        puts sessions_controller_file_name
+        puts 'csessions_controller_file_name'
         # Check for class naming collisions.
         class_collisions sessions_controller_class_path, "#{sessions_controller_class_name}Controller", # Sessions Controller
                                                          "#{sessions_controller_class_name}Helper"
@@ -53,9 +55,9 @@ module Somatics
 
         template 'sessions_controller.rb', File.join('app/controllers', sessions_controller_class_path, "#{sessions_controller_file_name}_controller.rb")
 
-        template 'authenticated_system.rb', File.join('lib', "#{file_name}_authenticated_system.rb")
-        template 'authenticated_test_helper.rb', File.join('lib', "#{file_name}_authenticated_test_helper.rb")
-        template 'site_keys.rb', site_keys_file #_without_destroy
+        template 'authenticated_system.rb', File.join('lib', "#{controller_file_name}_authenticated_system.rb")
+        template 'authenticated_test_helper.rb', File.join('lib', "#{controller_file_name}_authenticated_test_helper.rb")
+        template 'config/initializers/site_keys.rb', "config/initializers/#{controller_file_name}_site_keys.rb"
 
         # template 'test/sessions_functional_test.rb', File.join('test/functional', sessions_controller_class_path, "#{sessions_controller_file_name}_controller_test.rb")
         # template 'test/mailer_test.rb', File.join('test/unit', class_path, "#{file_name}_mailer_test.rb") if options[:include_activation]
@@ -156,10 +158,6 @@ module Somatics
       
       def sessions_controller_controller_name
         controller_plural_name
-      end
-      
-      def site_keys_file
-        File.join("config", "initializers", "site_keys.rb")
       end
       
       #
