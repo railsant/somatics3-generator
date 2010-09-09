@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
      "lib/generators/somatics/authenticated/templates/activation.erb",
      "lib/generators/somatics/authenticated/templates/authenticated_system.rb",
      "lib/generators/somatics/authenticated/templates/authenticated_test_helper.rb",
+     "lib/generators/somatics/authenticated/templates/config/initializers/site_keys.rb",
      "lib/generators/somatics/authenticated/templates/controller.rb",
      "lib/generators/somatics/authenticated/templates/helper.rb",
      "lib/generators/somatics/authenticated/templates/login.html.erb",

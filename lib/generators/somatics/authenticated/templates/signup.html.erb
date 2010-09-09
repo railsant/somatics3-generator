@@ -2,7 +2,7 @@
 <%% @<%= file_name %>.password = @<%= file_name %>.password_confirmation = nil %>
 
 <%%= error_messages_for :<%= file_name %> %>
-<%% form_for :<%= file_name %>, :url => <%= controller_routing_name %>_register_path do |f| -%>
+<%% form_for :<%= file_name %>, :url => <%= sessions_controller_routing_name %>_register_path do |f| -%>
 <p><%%= label_tag 'login' %><br/>
 <%%= f.text_field :login %></p>
 
