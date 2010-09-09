@@ -2,20 +2,29 @@ require 'generators/somatics'
 require 'rails/generators/named_base'
 require 'rails/generators/resource_helpers'
 require 'digest/sha1'
+require 'rails/generators/migration'
         
 module Somatics
   module Generators
     class AuthenticatedGenerator < Rails::Generators::NamedBase
       extend TemplatePath
       include Rails::Generators::ResourceHelpers
+      include Rails::Generators::Migration
       # hook_for :authenticated , :in => :somatics, :as => :scaffold, :default => 'somatics:scaffold' do |instance, command|
       #         instance.invoke command, [ class_name, attributes], {:namespace => 'admin' }
       # end
       
       argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
-      class_option :namespace, :banner => "NAME", :type => :string, :required => false, :default => "admin"
-      class_option :include_activation, :type => :boolean, :required => false, :default => false
-      class_option :old_passwords, :type => :boolean, :required => false, :default => false
+      class_option :namespace, :banner => "NAME", :type => :string
+      
+      class_option :skip_routes,          :type => :boolean, :desc => "Don't generate a resource line in config/routes.rb."
+      class_option :skip_migration,       :type => :boolean, :desc => "Don't generate a migration file for this model."
+      class_option :aasm,                 :type => :boolean, :desc => "Works the same as stateful but uses the updated aasm gem"
+      class_option :stateful,             :type => :boolean, :desc => "Builds in support for acts_as_state_machine and generatesactivation code."
+      class_option :rspec,                :type => :boolean, :desc => "Generate RSpec tests and Stories in place of standard rails tests."
+      class_option :old_passwords,        :type => :boolean, :desc => "Use the older password scheme"
+      class_option :include_activation,   :type => :boolean, :desc => "Skip the code for a ActionMailer and its respective Activation Code through email"
+      class_option :dump_generator_attrs, :type => :boolean, :desc => "Dump Generator Attrs"
       
       # Try to be idempotent:
       # pull in the existing site key if any,
@@ -42,7 +51,21 @@ module Somatics
         template 'config/initializers/site_keys.rb'
       end
       
-      def generate_authentication_system
+      def create_model_files
+        template 'model.rb', File.join('app/models', class_path, "#{ file_name }.rb")
+        if options.include_activation?
+          # Check for class naming collisions.
+          class_collisions  "#{class_name}Mailer", "#{class_name}MailerTest", "#{class_name}Observer"
+          template "mailer.rb", File.join('app/mailers', class_path, "#{ file_name }_mailer.rb")
+          template "observer.rb", File.join('app/models', class_path, "#{ file_name }_observer.rb")
+        end
+      end
+      
+      def create_controller_files
+        template 'controller.rb', File.join('app/controllers',"#{options.namespace}", controller_class_path, "#{ controller_file_name }_controller.rb")
+      end
+      
+      def generate_lib_files
         # Check for class naming collisions.
         class_collisions [], "#{class_name}AuthenticatedSystem", "#{class_name}AuthenticatedTestHelper"
         
@@ -50,16 +73,13 @@ module Somatics
         template 'authenticated_test_helper.rb', File.join('lib', "#{controller_file_name}_authenticated_test_helper.rb")
       end
       
-      def generate_observer
-        # Check for class naming collisions.
-        class_collisions  "#{class_name}Mailer", "#{class_name}MailerTest", "#{class_name}Observer"
-        
-        if options[:include_activation]
-          %w( mailer observer ).each do |model_type|
-            template "#{model_type}.rb", File.join('app/models', class_path, "#{file_name}_#{model_type}.rb")
-          end
-          # template 'test/mailer_test.rb', File.join('test/unit', class_path, "#{file_name}_mailer_test.rb") if options[:include_activation]
-        end
+      def create_test_files
+        #TODO : Create test files
+      end
+      
+      def create_helper_files
+        template 'session_helper.rb', File.join('app/helpers', sessions_controller_class_path, "#{ sessions_controller_file_name }_helper.rb")
+        template 'helper.rb', File.join('app/helpers', controller_class_path, "#{ controller_file_name }_helper.rb")
       end
       
       def generate_sessions_controller
@@ -97,10 +117,51 @@ module Somatics
       
       def add_model_and_migration
         template 'model.rb', "app/model/#{singular_name}.rb"
-        template 'migration.rb', "app/model/#{singular_name}.rb"
+        unless options.skip_migration?
+          migration_template 'migration.rb', "db/migrate/create_#{ migration_file_name }.rb"
+        end
       end
       
-      private 
+      def dump_generator_attribute_names
+        generator_attribute_names = [
+          :table_name,
+          :file_name,
+          :class_name,
+          :sessions_controller_name,
+          :sessions_controller_class_path,
+          :sessions_controller_file_path,
+          :sessions_controller_class_nesting,
+          :sessions_controller_class_nesting_depth,
+          :sessions_controller_class_name,
+          :sessions_controller_singular_name,
+          :sessions_controller_plural_name,
+          :sessions_controller_routing_name,                 # new_session_path
+          :sessions_controller_routing_path,                 # /session/new
+          :sessions_controller_controller_name,              # sessions
+          :sessions_controller_file_name,
+          :sessions_controller_table_name, :sessions_controller_plural_name,
+          :controller_name,
+          :controller_class_path,
+          :controller_file_path,
+          :controller_class_nesting,
+          :controller_class_nesting_depth,
+          :controller_class_name,
+          :controller_singular_name,
+          :controller_plural_name,
+          :controller_routing_name,           # new_user_path
+          :controller_routing_path,           # /users/new
+          :controller_controller_name,        # users
+          :controller_file_name,  :controller_singular_name,
+          :controller_table_name, :controller_plural_name,
+        ]
+
+        generator_attribute_names.each do |attr|
+          puts "%-40s %s" % ["#{attr}:", self.send(attr.to_s)]  # instance_variable_get("@#{attr.to_s}"
+        end
+
+      end
+      
+      protected 
       
       def namespace_class
         options[:namespace].classify
@@ -115,15 +176,15 @@ module Somatics
       end
       
       def sessions_controller_class_name
-        controller_class_name
+        controller_class_name + 'Session'
       end
       
       def sessions_controller_file_name
-        controller_file_name
+        controller_file_name + '_session'
       end
       
       def sessions_controller_name
-        controller_name
+        controller_name + '_session'
       end
       
       def sessions_controller_routing_name  
@@ -131,7 +192,7 @@ module Somatics
       end
       
       def sessions_controller_routing_path
-        controller_file_path.singularize
+        session_controller_file_path.singularize
       end
       
       def sessions_controller_controller_name
@@ -140,6 +201,30 @@ module Somatics
       
       def controller_plural_name
         plural_name
+      end
+      
+      def controller_routing_name
+        controller_plural_name
+      end
+      
+      def migration_name
+        "Create#{ class_name.pluralize.gsub(/::/, '') }"
+      end
+
+      def migration_file_name
+        "#{ file_path.gsub(/\//, '_').pluralize }"
+      end
+      
+      #
+      # Implement the required interface for Rails::Generators::Migration.
+      # taken from http://github.com/rails/rails/blob/master/activerecord/lib/generators/active_record.rb
+      #
+      def self.next_migration_number(dirname) #:nodoc:
+        if ActiveRecord::Base.timestamped_migrations
+          Time.now.utc.strftime("%Y%m%d%H%M%S")
+        else
+          "%.3d" % (current_migration_number(dirname) + 1)
+        end
       end
       
       #
