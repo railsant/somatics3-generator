@@ -10,8 +10,8 @@ begin
     gem.email = "tkwong@inspiresynergy.com"
     gem.homepage = "http://github.com/inspiresynergy/somatics3-generators"
     gem.authors = ["tkwong"]
-    # gem.files = FileList["[a-z][A-Z]*", "{lib}/**/*", "{templates}/**/*", "{bin}/**/*"]
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    # gem.files = FileList["[a-z][A-Z]*", "{lib,templates,bin}/**/*"]
+    # gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     gem.rubyforge_project = 'somatics3'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
@@ -55,4 +55,5 @@ Rake::RDocTask.new do |rdoc|
   rdoc.title = "somatics3-generators #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
+  rdoc.rdoc_files.exclude('lib/**/templates/*')
 end
