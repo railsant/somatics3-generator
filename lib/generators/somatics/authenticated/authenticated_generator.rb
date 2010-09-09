@@ -130,8 +130,8 @@ module Somatics
           :sessions_controller_name,
           :sessions_controller_class_path,
           :sessions_controller_file_path,
-          :sessions_controller_class_nesting,
-          :sessions_controller_class_nesting_depth,
+          # :sessions_controller_class_nesting,
+          # :sessions_controller_class_nesting_depth,
           :sessions_controller_class_name,
           :sessions_controller_singular_name,
           :sessions_controller_plural_name,
@@ -139,20 +139,23 @@ module Somatics
           :sessions_controller_routing_path,                 # /session/new
           :sessions_controller_controller_name,              # sessions
           :sessions_controller_file_name,
-          :sessions_controller_table_name, :sessions_controller_plural_name,
+          :sessions_controller_table_name, 
+          :sessions_controller_plural_name,
           :controller_name,
           :controller_class_path,
           :controller_file_path,
-          :controller_class_nesting,
-          :controller_class_nesting_depth,
-          :controller_class_name,
-          :controller_singular_name,
+          # :controller_class_nesting,
+          # :controller_class_nesting_depth,
+          # :controller_class_name,
+          # :controller_singular_name,
           :controller_plural_name,
           :controller_routing_name,           # new_user_path
-          :controller_routing_path,           # /users/new
-          :controller_controller_name,        # users
-          :controller_file_name,  :controller_singular_name,
-          :controller_table_name, :controller_plural_name,
+          # :controller_routing_path,           # /users/new
+          # :controller_controller_name,        # users
+          # :controller_file_name,  
+          # :controller_singular_name,
+          # :controller_table_name, 
+          # :controller_plural_name,
         ]
 
         generator_attribute_names.each do |attr|
@@ -169,6 +172,19 @@ module Somatics
       
       def namespace_name
         options[:namespace].underscore
+      end
+      
+      def sessions_controller_singular_name
+        controller_name
+      end
+      
+      def sessions_controller_plural_name
+        controller_name
+      end
+      
+      
+      def sessions_controller_file_path
+        controller_file_path
       end
       
       def sessions_controller_class_path
@@ -192,10 +208,14 @@ module Somatics
       end
       
       def sessions_controller_routing_path
-        session_controller_file_path.singularize
+        sessions_controller_file_path.singularize
       end
       
       def sessions_controller_controller_name
+        controller_plural_name
+      end
+      
+      def sessions_controller_table_name
         controller_plural_name
       end
       
