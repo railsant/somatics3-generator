@@ -9,9 +9,9 @@ begin
     gem.description = %Q{Somatics 3 generators is used to generate a resource with skeleton admin panel}
     gem.email = "tkwong@inspiresynergy.com"
     gem.homepage = "http://github.com/inspiresynergy/somatics3-generators"
-    gem.authors = ["tkwong"]
-    # gem.files = FileList["[a-z][A-Z]*", "{lib,templates,bin}/**/*"]
+    gem.authors = ["Benjamin Wong"]
     # gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    gem.rdoc_options << "--exclude 'lib/**/templates/*'"
     gem.rubyforge_project = 'somatics3'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end

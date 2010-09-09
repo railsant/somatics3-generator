@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["tkwong"]
+  s.authors = ["Benjamin Wong"]
   s.date = %q{2010-09-09}
   s.default_executable = %q{somatics}
   s.description = %q{Somatics 3 generators is used to generate a resource with skeleton admin panel}
@@ -189,7 +189,7 @@ Gem::Specification.new do |s|
      "test/test_somatics3-generators.rb"
   ]
   s.homepage = %q{http://github.com/inspiresynergy/somatics3-generators}
-  s.rdoc_options = ["--charset=UTF-8"]
+  s.rdoc_options = ["--charset=UTF-8", "--exclude 'lib/**/templates/*'"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{somatics3}
   s.rubygems_version = %q{1.3.7}
@@ -204,12 +204,9 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<thoughtbot-shoulda>, [">= 0"])
     else
-      s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
     end
   else
-    s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
   end
 end
 
