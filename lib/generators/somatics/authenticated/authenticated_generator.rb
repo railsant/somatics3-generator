@@ -140,7 +140,6 @@ module Somatics
           :sessions_controller_controller_name,              # sessions
           :sessions_controller_file_name,
           :sessions_controller_table_name, 
-          :sessions_controller_plural_name,
           :controller_name,
           :controller_class_path,
           :controller_file_path,
@@ -164,6 +163,41 @@ module Somatics
 
       end
       
+      # rails g authenticated FoonParent::Foon SporkParent::Spork -p --force --rspec --dump-generator-attrs
+      # table_name:                              foon_parent_foons
+      # file_name:                               foon
+      # class_name:                              FoonParent::Foon
+      # controller_name:                         SporkParent::Sporks
+      # controller_class_path:                   spork_parent
+      # controller_file_path:                    spork_parent/sporks
+      # controller_class_nesting:                SporkParent
+      # controller_class_nesting_depth:          1
+      # controller_class_name:                   SporkParent::Sporks
+      # controller_singular_name:                spork
+      # controller_plural_name:                  sporks
+      # controller_routing_name:                 spork
+      # controller_routing_path:                 spork_parent/spork
+      # controller_controller_name:              sporks
+      # controller_file_name:                    sporks
+      # controller_table_name:                   sporks
+      # controller_plural_name:                  sporks
+      # model_controller_name:                   FoonParent::Foons
+      # model_controller_class_path:             foon_parent
+      # model_controller_file_path:              foon_parent/foons
+      # model_controller_class_nesting:          FoonParent
+      # model_controller_class_nesting_depth:    1
+      # model_controller_class_name:             FoonParent::Foons
+      # model_controller_singular_name:          foons
+      # model_controller_plural_name:            foons
+      # model_controller_routing_name:           foon_parent_foons
+      # model_controller_routing_path:           foon_parent/foons
+      # model_controller_controller_name:        foons
+      # model_controller_file_name:              foons
+      # model_controller_singular_name:          foons
+      # model_controller_table_name:             foons
+      # model_controller_plural_name:            foons
+      
+      
       protected 
       
       def namespace_class
@@ -174,6 +208,18 @@ module Somatics
         options[:namespace].underscore
       end
       
+      def sessions_controller_name
+        controller_name + '_session'
+      end
+      
+      def sessions_controller_class_path
+        class_path
+      end
+      
+      def sessions_controller_file_path
+        controller_file_path
+      end
+      
       def sessions_controller_singular_name
         controller_name
       end
@@ -182,37 +228,24 @@ module Somatics
         controller_name
       end
       
-      
-      def sessions_controller_file_path
-        controller_file_path
-      end
-      
-      def sessions_controller_class_path
-        controller_class_path
-      end
-      
-      def sessions_controller_class_name
-        controller_class_name + 'Session'
-      end
-      
-      def sessions_controller_file_name
-        controller_file_name + '_session'
-      end
-      
-      def sessions_controller_name
-        controller_name + '_session'
-      end
-      
       def sessions_controller_routing_name  
         singular_name
-      end
+      end      
       
       def sessions_controller_routing_path
         sessions_controller_file_path.singularize
       end
       
+      def sessions_controller_class_name
+        class_name + 'Session'
+      end
+      
       def sessions_controller_controller_name
         controller_plural_name
+      end
+      
+      def sessions_controller_file_name
+        controller_file_name + '_session'
       end
       
       def sessions_controller_table_name
