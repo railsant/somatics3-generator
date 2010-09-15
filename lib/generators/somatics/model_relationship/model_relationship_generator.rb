@@ -1,10 +1,9 @@
 require 'generators/somatics'
-require 'rails/generators/rails/resource/resource_generator'
-require 'rails/generators/resource_helpers'
-
+require 'rails/generators/named_base'
 module Somatics
   module Generators
-    class ModelRelationshipGenerator < Rails::Generators::ModelGenerator #metagenerator
+    class ModelRelationshipGenerator < Rails::Generators::Base
+      extend TemplatePath
       include Rails::Generators::ResourceHelpers
 
       # hook_for :scaffold_controller, :required => true # do |controller|

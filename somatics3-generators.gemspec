@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{somatics3-generators}
-  s.version = "0.0.4"
+  s.version = "0.0.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Benjamin Wong"]
@@ -169,6 +169,12 @@ Gem::Specification.new do |s|
      "lib/generators/somatics/install/templates/public/stylesheets/somatics/csshover.htc",
      "lib/generators/somatics/install/templates/public/stylesheets/somatics/jstoolbar.css",
      "lib/generators/somatics/install/templates/view_index.html.erb",
+     "lib/generators/somatics/model_relationship/model_relationship_generator.rb",
+     "lib/generators/somatics/model_relationship/templates/_form.html.erb",
+     "lib/generators/somatics/model_relationship/templates/edit.html.erb",
+     "lib/generators/somatics/model_relationship/templates/index.html.erb",
+     "lib/generators/somatics/model_relationship/templates/new.html.erb",
+     "lib/generators/somatics/model_relationship/templates/show.html.erb",
      "lib/generators/somatics/scaffold/scaffold_generator.rb",
      "lib/generators/somatics/scaffold/templates/_form.html.erb",
      "lib/generators/somatics/scaffold/templates/edit.html.erb",
