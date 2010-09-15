@@ -9,6 +9,8 @@ gem 'prawn', :version => '0.6.3'
 gem 'somatics3-generators'
 gem 'json'
 
+rake "gems:install", :sudo => true
+
 plugin 'action_mailer_optional_tls',
   :git => 'git://github.com/collectiveidea/action_mailer_optional_tls.git'
 plugin 'faster_csv',
@@ -89,11 +91,12 @@ rakefile "setup_svn.rake" do
   TASK
 end
 
-# rake "gems:install", :sudo => true
 generate "somatics:install"
 environment 'config.autoload_paths += %W(#{config.root}/lib)'
 generate "somatics:authenticated user"
 generate "somatics:authenticated_controller admin/user --model=User"
+
+run %(rails runner "User.create(:name => 'Admin', :login => 'admin', :password => 'somatics', :password_confirmation => 'somatics', :email => 'admin@admin.com')")
 
 # 
 # generate "tinymce_installation"

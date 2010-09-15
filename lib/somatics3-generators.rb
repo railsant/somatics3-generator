@@ -10,9 +10,10 @@ Rails::Generators.hidden_namespaces << "rails"
   [
 #     "#{template}:controller",
 #     "#{template}:scaffold",
-#     "#{template}:scaffold_controller"
-    "#{template}:assets",
-    "#{template}:helper"
+    "#{template}:scaffold_controller",
+    "#{template}:helper",
+    "#{template}:authenticated",
+    "#{template}:authenticated_controller",
   ]
 end
 
