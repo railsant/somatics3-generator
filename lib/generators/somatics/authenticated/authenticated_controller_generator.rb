@@ -6,7 +6,7 @@ require 'rails/generators/migration'
         
 module Somatics
   module Generators
-    class AuthenticatedGenerator < Rails::Generators::NamedBase
+    class AuthenticatedControllerGenerator < Rails::Generators::NamedBase
       extend TemplatePath
       include Rails::Generators::ResourceHelpers
       include Rails::Generators::Migration
@@ -49,16 +49,6 @@ module Somatics
         end
         # template 'config/initializers/site_keys.rb', "config/initializers/#{controller_file_name}_site_keys.rb"
         template 'config/initializers/site_keys.rb'
-      end
-      
-      def create_model_files
-        template 'model.rb', File.join('app/models', class_path, "#{ file_name }.rb")
-        if options.include_activation?
-          # Check for class naming collisions.
-          class_collisions  "#{class_name}Mailer", "#{class_name}MailerTest", "#{class_name}Observer"
-          template "mailer.rb", File.join('app/mailers', class_path, "#{ file_name }_mailer.rb")
-          template "observer.rb", File.join('app/models', class_path, "#{ file_name }_observer.rb")
-        end
       end
       
       def create_controller_files
@@ -115,15 +105,10 @@ module Somatics
         puts "TODO: include #{class_name}AuthenticatedSystem"
       end
       
-      def add_model_and_migration
-        template 'model.rb', "app/model/#{singular_name}.rb"
-        unless options.skip_migration?
-          migration_template 'migration.rb', "db/migrate/create_#{ migration_file_name }.rb"
-        end
-      end
-      
       def dump_generator_attribute_names
         generator_attribute_names = [
+          :namespace_class,
+          :namespace_name,          
           :table_name,
           :file_name,
           :class_name,
@@ -217,19 +202,19 @@ module Somatics
       end
       
       def sessions_controller_file_path
-        controller_file_path
+        file_name + '_sessions'
       end
       
       def sessions_controller_singular_name
-        controller_name
+        sessions_controller_file_name
       end
       
       def sessions_controller_plural_name
-        controller_name
+        sessions_controller_file_name.pluralize
       end
       
       def sessions_controller_routing_name  
-        singular_name
+        sessions_controller_plural_name
       end      
       
       def sessions_controller_routing_path
@@ -241,7 +226,7 @@ module Somatics
       end
       
       def sessions_controller_controller_name
-        controller_plural_name
+        sessions_controller_plural_name
       end
       
       def sessions_controller_file_name
@@ -249,7 +234,7 @@ module Somatics
       end
       
       def sessions_controller_table_name
-        controller_plural_name
+        sessions_controller_plural_name
       end
       
       def controller_plural_name
