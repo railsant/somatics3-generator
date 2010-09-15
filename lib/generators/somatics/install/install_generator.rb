@@ -56,8 +56,8 @@ module Somatics
         route route_config
       end
       
-      def add_initializer
-        directory "config/initializers"
+      def libs
+        directory "lib"
       end
       
     end

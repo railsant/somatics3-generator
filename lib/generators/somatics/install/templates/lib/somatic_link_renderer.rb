@@ -1,4 +1,4 @@
-class SomaticLinkRenderer < WillPaginate::LinkRenderer
+class SomaticLinkRenderer < WillPaginate::ViewHelpers::LinkRenderer
   
   def to_html
     links = @options[:page_links] ? windowed_links : []
