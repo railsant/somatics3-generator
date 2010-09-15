@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "bin/somatics",
+     "bin/somatify",
      "lib/generators/somatics.rb",
      "lib/generators/somatics/authenticated/authenticated_generator.rb",
      "lib/generators/somatics/authenticated/templates/mailer.rb",
