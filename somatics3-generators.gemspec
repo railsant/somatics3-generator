@@ -27,6 +27,8 @@ Gem::Specification.new do |s|
      "bin/somatics",
      "bin/somatify",
      "lib/generators/somatics.rb",
+     "lib/generators/somatics/attributes/attributes_generator.rb",
+     "lib/generators/somatics/attributes/templates/migration.rb",
      "lib/generators/somatics/authenticated/authenticated_generator.rb",
      "lib/generators/somatics/authenticated/templates/mailer.rb",
      "lib/generators/somatics/authenticated/templates/migration.rb",
