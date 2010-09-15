@@ -16,6 +16,7 @@ ARGV.clear
 template = File.join(template_path,'somatics.rb')
 
 # puts "#{path} #{a} #{args.join(',')} #{template}"
+puts "rails #{args.join(' ')} -m #{template}"
 system "rails #{args.join(' ')} -m #{template}"
 
 exit

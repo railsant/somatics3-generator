@@ -12,10 +12,10 @@ args = ARGV.dup
 ARGV.clear
 path = args.shift.strip rescue '.'
 
-a = File.expand_path(path)
+# a = File.expand_path(path)
 template = File.join(template_path,'somatics.rb')
 
-# puts "#{path} #{a} #{args.join(',')} #{template}"
+puts "rake rails:template LOCATION=#{template}"
 system "rake rails:template LOCATION=#{template}"
 
 exit
