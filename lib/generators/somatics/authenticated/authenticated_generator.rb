@@ -35,7 +35,6 @@ module Somatics
       end
       
       def add_model_and_migration
-        template 'model.rb', "app/model/#{singular_name}.rb"
         unless options.skip_migration?
           migration_template 'migration.rb', "db/migrate/create_#{ migration_file_name }.rb"
         end
