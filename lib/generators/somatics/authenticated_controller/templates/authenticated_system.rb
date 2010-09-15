@@ -1,4 +1,4 @@
-module <%= class_name %>AuthenticatedSystem
+module <%= model_class_name %>AuthenticatedSystem
   protected
     # Returns true or false if the <%= file_name %> is logged in.
     # Preloads @current_<%= file_name %> with the <%= file_name %> model if they're logged in.
@@ -65,7 +65,7 @@ module <%= class_name %>AuthenticatedSystem
       respond_to do |format|
         format.html do
           store_location
-          redirect_to <%= options[:admin_authenticated] ? 'admin_' : '' %><%= file_name %>_login_path
+          redirect_to <%= controller_routing_name %>_login_path
         end
         # format.any doesn't work in rails version < http://dev.rubyonrails.org/changeset/8987
         # Add any other API formats here.  (Some browsers, notably IE6, send Accept: */* and trigger 
@@ -105,13 +105,13 @@ module <%= class_name %>AuthenticatedSystem
 
     # Called from #current_<%= file_name %>.  First attempt to login by the <%= file_name %> id stored in the session.
     def <%= file_name %>_login_from_session
-      self.current_<%= file_name %> = <%= class_name %>.find_by_id(session[:<%= file_name %>_id]) if session[:<%= file_name %>_id]
+      self.current_<%= file_name %> = <%= model_class_name %>.find_by_id(session[:<%= file_name %>_id]) if session[:<%= file_name %>_id]
     end
 
     # Called from #current_<%= file_name %>.  Now, attempt to login by basic authentication information.
     def <%= file_name %>_login_from_basic_auth
       authenticate_with_http_basic do |login, password|
-        self.current_<%= file_name %> = <%= class_name %>.authenticate(login, password)
+        self.current_<%= file_name %> = <%= model_class_name %>.authenticate(login, password)
       end
     end
     
@@ -122,7 +122,7 @@ module <%= class_name %>AuthenticatedSystem
     # Called from #current_<%= file_name %>.  Finaly, attempt to login by an expiring token in the cookie.
     # for the paranoid: we _should_ be storing <%= file_name %>_token = hash(cookie_token, request IP)
     def <%= file_name %>_login_from_cookie
-      <%= file_name %> = cookies[:auth_token] && <%= class_name %>.find_by_remember_token(cookies[:auth_token])
+      <%= file_name %> = cookies[:auth_token] && <%= model_class_name %>.find_by_remember_token(cookies[:auth_token])
       if <%= file_name %> && <%= file_name %>.remember_token?
         self.current_<%= file_name %> = <%= file_name %>
         <%= file_name %>_handle_remember_cookie! false # freshen cookie token (keeping date)
@@ -135,7 +135,7 @@ module <%= class_name %>AuthenticatedSystem
     # However, **all session state variables should be unset here**.
     def <%= file_name %>_logout_keeping_session!
       # Kill server-side auth cookie
-      @current_<%= file_name %>.forget_me if @current_<%= file_name %>.is_a? <%= class_name %>
+      @current_<%= file_name %>.forget_me if @current_<%= file_name %>.is_a? <%= model_class_name %>
       @current_<%= file_name %> = false     # not logged in, and don't do it for me
       <%= file_name %>_kill_remember_cookie!     # Kill client-side auth cookie
       session[:<%= file_name %>_id] = nil   # keeps the session but kill our variable

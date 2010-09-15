@@ -91,6 +91,10 @@ end
 
 # rake "gems:install", :sudo => true
 generate "somatics:install"
+environment 'config.autoload_paths += %W(#{config.root}/lib)'
+generate "somatics:authenticated user"
+generate "somatics:authenticated_controller admin/user --model=User"
+
 # 
 # generate "tinymce_installation"
 # generate "admin_controllers"

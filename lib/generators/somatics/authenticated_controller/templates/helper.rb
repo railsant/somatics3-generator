@@ -1,4 +1,4 @@
-module <%= table_name.camelize %>Helper
+module <%= controller_class_name %>Helper
   #
   # Use this to wrap view elements that the user can't access.
   # !! Note: this is an *interface*, not *security* feature !!

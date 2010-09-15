@@ -10,12 +10,12 @@ template_path = File.expand_path(File.dirname(__FILE__) + '/../templates')
 
 args = ARGV.dup
 ARGV.clear
-# path = args.shift.strip rescue '.'
+path = args.shift.strip rescue '.'
 
-# a = File.expand_path(path)
+a = File.expand_path(path)
 template = File.join(template_path,'somatics.rb')
 
 # puts "#{path} #{a} #{args.join(',')} #{template}"
-system "rails #{args.join(' ')} -m #{template}"
+system "rake rails:template LOCATION=#{template}"
 
 exit

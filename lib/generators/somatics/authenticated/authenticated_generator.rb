@@ -10,9 +10,6 @@ module Somatics
       extend TemplatePath
       include Rails::Generators::ResourceHelpers
       include Rails::Generators::Migration
-      # hook_for :authenticated , :in => :somatics, :as => :scaffold, :default => 'somatics:scaffold' do |instance, command|
-      #         instance.invoke command, [ class_name, attributes], {:namespace => 'admin' }
-      # end
       
       argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
       class_option :namespace, :banner => "NAME", :type => :string, :default => ''
@@ -26,31 +23,7 @@ module Somatics
       class_option :include_activation,   :type => :boolean, :desc => "Skip the code for a ActionMailer and its respective Activation Code through email"
       class_option :dump_generator_attrs, :type => :boolean, :desc => "Dump Generator Attrs"
       
-      # Try to be idempotent:
-      # pull in the existing site key if any,
-      # seed it with reasonable defaults otherwise
-      #
-      def load_or_initialize_site_keys
-        case
-        when defined? REST_AUTH_SITE_KEY
-          if (options[:old_passwords]) && ((! REST_AUTH_SITE_KEY.blank?) || (REST_AUTH_DIGEST_STRETCHES != 1))
-            raise "You have a site key, but --old-passwords will overwrite it.  If this is really what you want, move the file #{site_keys_file} and re-run."
-          end
-          $rest_auth_site_key_from_generator         = REST_AUTH_SITE_KEY
-          $rest_auth_digest_stretches_from_generator = REST_AUTH_DIGEST_STRETCHES
-        when options[:old_passwords]
-          $rest_auth_site_key_from_generator         = nil
-          $rest_auth_digest_stretches_from_generator = 1
-          $rest_auth_keys_are_new                    = true
-        else
-          $rest_auth_site_key_from_generator         = make_token
-          $rest_auth_digest_stretches_from_generator = 10
-          $rest_auth_keys_are_new                    = true
-        end
-        # template 'config/initializers/site_keys.rb', "config/initializers/#{controller_file_name}_site_keys.rb"
-        template 'config/initializers/site_keys.rb'
-      end
-      
+
       def create_model_files
         template 'model.rb', File.join('app/models', class_path, "#{ file_name }.rb")
         if options.include_activation?
@@ -59,60 +32,6 @@ module Somatics
           template "mailer.rb", File.join('app/mailers', class_path, "#{ file_name }_mailer.rb")
           template "observer.rb", File.join('app/models', class_path, "#{ file_name }_observer.rb")
         end
-      end
-      
-      def create_controller_files
-        template 'controller.rb', File.join('app/controllers',"#{options.namespace}", controller_class_path, "#{ controller_file_name }_controller.rb")
-      end
-      
-      def generate_lib_files
-        # Check for class naming collisions.
-        class_collisions [], "#{class_name}AuthenticatedSystem", "#{class_name}AuthenticatedTestHelper"
-        
-        template 'authenticated_system.rb', File.join('lib', "#{controller_file_name}_authenticated_system.rb")
-        template 'authenticated_test_helper.rb', File.join('lib', "#{controller_file_name}_authenticated_test_helper.rb")
-      end
-      
-      def create_test_files
-        #TODO : Create test files
-      end
-      
-      def create_helper_files
-        template 'session_helper.rb', File.join('app/helpers', sessions_controller_class_path, "#{ sessions_controller_file_name }_helper.rb")
-        template 'helper.rb', File.join('app/helpers', controller_class_path, "#{ controller_file_name }_helper.rb")
-      end
-      
-      def generate_sessions_controller
-
-        # Check for class naming collisions.
-        class_collisions sessions_controller_class_path, "#{sessions_controller_class_name}Controller", # Sessions Controller
-                                                         "#{sessions_controller_class_name}Helper"
-
-        template 'sessions_controller.rb', File.join('app/controllers', sessions_controller_class_path, "#{sessions_controller_file_name}_controller.rb")
-        # template 'session_helper.rb', File.join('app/helpers', sessions_controller_class_path, "#{sessions_controller_file_name}_helper.rb")
-        # template 'test/sessions_functional_test.rb', File.join('test/functional', sessions_controller_class_path, "#{sessions_controller_file_name}_controller_test.rb")
-
-        # View templates
-        # template 'login.html.erb',  File.join('app/views', sessions_controller_class_path, sessions_controller_file_name, "new.html.erb")
-        template 'login.html.erb', File.join('app/views', sessions_controller_file_name, 'new.html.erb')
-        # template 'signup.html.erb', File.join('app/views', controller_class_path, controller_file_name, "signup.html.erb")
-        template 'signup.html.erb', File.join('app/views', controller_file_name, 'new.html.erb')
-        # template '_model_partial.html.erb', File.join('app/views', controller_class_path, controller_file_name, "_#{file_name}_bar.html.erb")
-        template '_model_partial.html.erb', File.join('app/views', controller_file_name, "_#{file_name}_bar.html.erb")
-
-        unless options[:skip_routes]
-          # signup routes
-          route %Q{match '#{file_name}_signup' => '#{controller_plural_name}#new'}
-          route %Q{match '#{file_name}_register' => '#{controller_plural_name}#create'}
-          # login 
-          route %Q{match '#{file_name}_login' => '#{sessions_controller_controller_name}#new'}
-          # logout 
-          route %Q{match '#{file_name}_logout' => '#{sessions_controller_controller_name}#destroy'}
-        end
-      end
-      
-      def insert_into_application_controller
-        puts "TODO: include #{class_name}AuthenticatedSystem"
       end
       
       def add_model_and_migration

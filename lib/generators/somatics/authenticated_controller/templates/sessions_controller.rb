@@ -1,7 +1,7 @@
 # This controller handles the login/logout function of the site.  
 class <%= sessions_controller_class_name %>Controller < <%= options[:admin_authenticated] ? "Admin::AdminController" : "ApplicationController" %>
   # Be sure to include AuthenticationSystem in Application Controller instead
-  include <%= class_name %>AuthenticatedSystem
+  include <%= model_class_name %>AuthenticatedSystem
   skip_before_filter :<%= file_name %>_login_required
   # render new.rhtml
   def new
@@ -9,7 +9,7 @@ class <%= sessions_controller_class_name %>Controller < <%= options[:admin_authe
 
   def create
     <%= file_name %>_logout_keeping_session!
-    <%= file_name %> = <%= class_name %>.authenticate(params[:login], params[:password])
+    <%= file_name %> = <%= model_class_name %>.authenticate(params[:login], params[:password])
     if <%= file_name %>
       # Protects against session fixation attacks, causes request forgery
       # protection if user resubmits an earlier form using back

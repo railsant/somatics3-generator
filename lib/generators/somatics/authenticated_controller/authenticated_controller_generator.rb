@@ -16,6 +16,7 @@ module Somatics
       
       argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
       class_option :namespace, :banner => "NAME", :type => :string
+      class_option :model, :banner => 'ClasName', :type => :string
       
       class_option :skip_routes,          :type => :boolean, :desc => "Don't generate a resource line in config/routes.rb."
       class_option :skip_migration,       :type => :boolean, :desc => "Don't generate a migration file for this model."
@@ -90,20 +91,28 @@ module Somatics
         # template '_model_partial.html.erb', File.join('app/views', controller_class_path, controller_file_name, "_#{file_name}_bar.html.erb")
         template '_model_partial.html.erb', File.join('app/views', sessions_controller_file_path, "_#{file_name}_bar.html.erb")
 
+      end
+      
+      def generate_route
         unless options[:skip_routes]
-          # signup routes
-          route %Q{match '#{file_name}_signup' => '#{controller_plural_name}#new'}
-          route %Q{match '#{file_name}_register' => '#{controller_plural_name}#create'}
-          # login 
-          route %Q{match '#{file_name}_login' => '#{sessions_controller_controller_name}#new'}
-          # logout 
-          route %Q{match '#{file_name}_logout' => '#{sessions_controller_controller_name}#destroy'}
-          
-          route "match '/activate/:activation_code' => '#{ controller_plural_name }#activate', :as => :activate, :activation_code => nil"
-
-          route "resource #{ sessions_controller_singular_name.to_sym.inspect }, :only => [:new, :create, :destroy]"
-
-          route "resources #{ controller_plural_name.to_sym.inspect }"
+          route_config =  class_path.collect{|namespace| "namespace :#{namespace} do " }.join(" ")
+          route_config << "\n"
+          route_config << %Q{match '#{file_name}_signup' => '#{controller_plural_name}#new'}
+          route_config << "\n"
+          route_config << %Q{match '#{file_name}_register' => '#{controller_plural_name}#create'}
+          route_config << "\n"
+          route_config << %Q{match '#{file_name}_login' => '#{sessions_controller_controller_name}#new'}
+          route_config << "\n"
+          route_config << %Q{match '#{file_name}_logout' => '#{sessions_controller_controller_name}#destroy'}
+          route_config << "\n"
+          route_config << "match '/activate/:activation_code' => '#{ controller_plural_name }#activate', :as => :activate, :activation_code => nil"
+          route_config << "\n"
+          route_config << "resource #{ sessions_controller_singular_name.to_sym.inspect }, :only => [:new, :create, :destroy]"
+          route_config << "\n"
+          route_config << "resources #{ controller_plural_name.to_sym.inspect }"
+          route_config << "\n"
+          route_config << " end" * class_path.size
+          route route_config
         end
       end
       
@@ -139,16 +148,16 @@ module Somatics
           :controller_file_path,
           # :controller_class_nesting,
           # :controller_class_nesting_depth,
-          # :controller_class_name,
-          # :controller_singular_name,
+          :controller_class_name,
+          :controller_singular_name,
           :controller_plural_name,
           :controller_routing_name,           # new_user_path
-          # :controller_routing_path,           # /users/new
-          # :controller_controller_name,        # users
-          # :controller_file_name,  
-          # :controller_singular_name,
-          # :controller_table_name, 
-          # :controller_plural_name,
+          :controller_routing_path,           # /users/new
+          :controller_controller_name,        # users
+          :controller_file_name,  
+          :controller_singular_name,
+          :controller_table_name, 
+          :controller_plural_name,
         ]
 
         generator_attribute_names.each do |attr|
@@ -195,11 +204,11 @@ module Somatics
       protected 
       
       def namespace_class
-        # options[:namespace].classify
+        options[:namespace].classify if options[:namespace].present?
       end
       
       def namespace_name
-        # options[:namespace].underscore
+        options[:namespace].underscore if options[:namespace].present?
       end
       
       def sessions_controller_name
@@ -207,11 +216,11 @@ module Somatics
       end
       
       def sessions_controller_class_path
-        class_path
+        controller_class_path
       end
       
       def sessions_controller_file_path
-        file_name + '_sessions'
+        controller_file_path.singularize + '_sessions'
       end
       
       def sessions_controller_singular_name
@@ -223,7 +232,7 @@ module Somatics
       end
       
       def sessions_controller_routing_name  
-        sessions_controller_singular_name
+        sessions_controller_routing_path.parameterize.underscore # HACK
       end      
       
       def sessions_controller_routing_path
@@ -231,7 +240,7 @@ module Somatics
       end
       
       def sessions_controller_class_name
-        class_name + 'Sessions'
+        controller_class_name.singularize + 'Sessions'
       end
       
       def sessions_controller_controller_name
@@ -250,8 +259,27 @@ module Somatics
         plural_name
       end
       
+      def controller_singular_name
+        singular_name
+      end
+      
       def controller_routing_name
+        controller_routing_path.parameterize.underscore # HACK
+      end
+      
+      def controller_routing_path
+        controller_file_path.singularize
+      end
+      
+      def controller_controller_name
         controller_plural_name
+      end
+      
+      alias_method  :controller_table_name, :controller_plural_name
+      
+      def model_class_name
+        class_name unless options[:model].present?
+        options[:model].classify
       end
       
       def migration_name

@@ -3,11 +3,11 @@
 <table>
   <tbody>
     <tr>
-      <td align="right"><b><%%= <%= class_name %>.human_attribute_name(:login) %></b></td>
+      <td align="right"><b><%%= <%= model_class_name %>.human_attribute_name(:login) %></b></td>
       <td align="left"><%%= text_field_tag 'login', @login %></td>
     </tr>
     <tr>
-      <td align="right"><b><%%= <%= class_name %>.human_attribute_name(:password) %></b></td>
+      <td align="right"><b><%%= <%= model_class_name %>.human_attribute_name(:password) %></b></td>
       <td align="left"><%%= password_field_tag 'password', nil %></td>
     </tr>
     <!-- Uncomment this if you want this functionality

@@ -1,16 +1,16 @@
 class <%= controller_plural_name.camelize %>Controller < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
-  include <%= class_name %>AuthenticatedSystem
+  include <%= model_class_name %>AuthenticatedSystem
   
   skip_before_filter :<%= file_name %>_login_required
 
   def new
-    @<%= file_name %> = <%= class_name %>.new
+    @<%= file_name %> = <%= model_class_name %>.new
   end
 
   def create
     <%= file_name %>_logout_keeping_session!
-    @<%= file_name %> = <%= class_name %>.new(params[:<%= file_name %>])
+    @<%= file_name %> = <%= model_class_name %>.new(params[:<%= file_name %>])
 <% if options[:stateful] -%>
     @<%= file_name %>.register! if @<%= file_name %> && @<%= file_name %>.valid?
     success = @<%= file_name %> && @<%= file_name %>.valid?
@@ -36,7 +36,7 @@ class <%= controller_plural_name.camelize %>Controller < ApplicationController
 <% if options[:include_activation] -%>
   def activate
     <%= file_name %>_logout_keeping_session!
-    <%= file_name %> = <%= class_name %>.find_by_activation_code(params[:activation_code]) unless params[:activation_code].blank?
+    <%= file_name %> = <%= model_class_name %>.find_by_activation_code(params[:activation_code]) unless params[:activation_code].blank?
     case
       when (!params[:activation_code].blank?) && <%= file_name %> && !<%= file_name %>.active?
         <%= file_name %>.activate!
