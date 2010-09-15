@@ -24,13 +24,13 @@ protected
   def page_link(page, text, attributes = {})
     # @template.content_tag(:li, @template.link_to(text, url_for(page)), attributes)
     # @template.link_to(text, url_for(page), attributes)
-    @template.link_to_remote(text,{
+    @template.link_to(text,{
         :url => url_for(page),
         :update => 'content',
         :method => :get
     },attributes.merge({
       :href => url_for(page)
-    })
+    }),:remote=>true
     )
   end
 
