@@ -59,8 +59,8 @@ module Somatics
         # Check for class naming collisions.
         class_collisions [], "#{class_name}AuthenticatedSystem", "#{class_name}AuthenticatedTestHelper"
         
-        template 'authenticated_system.rb', File.join('lib', "#{controller_file_name}_authenticated_system.rb")
-        template 'authenticated_test_helper.rb', File.join('lib', "#{controller_file_name}_authenticated_test_helper.rb")
+        template 'authenticated_system.rb', File.join('lib', "#{file_name}_authenticated_system.rb")
+        template 'authenticated_test_helper.rb', File.join('lib', "#{file_name}_authenticated_test_helper.rb")
       end
       
       def create_test_files
@@ -68,7 +68,7 @@ module Somatics
       end
       
       def create_helper_files
-        template 'session_helper.rb', File.join('app/helpers', sessions_controller_class_path, "#{ sessions_controller_file_name }_helper.rb")
+        template 'session_helper.rb', File.join('app/helpers', sessions_controller_class_path, "#{ sessions_controller_controller_name }_helper.rb")
         template 'helper.rb', File.join('app/helpers', controller_class_path, "#{ controller_file_name }_helper.rb")
       end
       
@@ -78,17 +78,17 @@ module Somatics
         class_collisions sessions_controller_class_path, "#{sessions_controller_class_name}Controller", # Sessions Controller
                                                          "#{sessions_controller_class_name}Helper"
 
-        template 'sessions_controller.rb', File.join('app/controllers', sessions_controller_class_path, "#{sessions_controller_file_name}_controller.rb")
-        # template 'session_helper.rb', File.join('app/helpers', sessions_controller_class_path, "#{sessions_controller_file_name}_helper.rb")
+        template 'sessions_controller.rb', File.join('app/controllers', sessions_controller_class_path, "#{sessions_controller_controller_name}_controller.rb")
+        # template 'session_helper.rb', File.join('app/helpers', sessions_controller_class_path, "#{sessions_controller_controller_name}_helper.rb")
         # template 'test/sessions_functional_test.rb', File.join('test/functional', sessions_controller_class_path, "#{sessions_controller_file_name}_controller_test.rb")
 
         # View templates
         # template 'login.html.erb',  File.join('app/views', sessions_controller_class_path, sessions_controller_file_name, "new.html.erb")
-        template 'login.html.erb', File.join('app/views', sessions_controller_file_name, 'new.html.erb')
+        template 'login.html.erb', File.join('app/views', sessions_controller_file_path, 'new.html.erb')
         # template 'signup.html.erb', File.join('app/views', controller_class_path, controller_file_name, "signup.html.erb")
-        template 'signup.html.erb', File.join('app/views', controller_file_name, 'new.html.erb')
+        template 'signup.html.erb', File.join('app/views', controller_file_path, 'new.html.erb')
         # template '_model_partial.html.erb', File.join('app/views', controller_class_path, controller_file_name, "_#{file_name}_bar.html.erb")
-        template '_model_partial.html.erb', File.join('app/views', controller_file_name, "_#{file_name}_bar.html.erb")
+        template '_model_partial.html.erb', File.join('app/views', sessions_controller_file_path, "_#{file_name}_bar.html.erb")
 
         unless options[:skip_routes]
           # signup routes
@@ -98,15 +98,26 @@ module Somatics
           route %Q{match '#{file_name}_login' => '#{sessions_controller_controller_name}#new'}
           # logout 
           route %Q{match '#{file_name}_logout' => '#{sessions_controller_controller_name}#destroy'}
+          
+          route "match '/activate/:activation_code' => '#{ controller_plural_name }#activate', :as => :activate, :activation_code => nil"
+
+          route "resource #{ sessions_controller_singular_name.to_sym.inspect }, :only => [:new, :create, :destroy]"
+
+          route "resources #{ controller_plural_name.to_sym.inspect }"
         end
       end
       
       def insert_into_application_controller
         puts "TODO: include #{class_name}AuthenticatedSystem"
+        puts "TODO: Add require #{class_name}in AuthenticatedSystem"
+        
+        
       end
       
       def dump_generator_attribute_names
         generator_attribute_names = [
+          :namespace_class,
+          :namespace_name,          
           :table_name,
           :file_name,
           :class_name,
@@ -184,11 +195,11 @@ module Somatics
       protected 
       
       def namespace_class
-        options[:namespace].classify
+        # options[:namespace].classify
       end
       
       def namespace_name
-        options[:namespace].underscore
+        # options[:namespace].underscore
       end
       
       def sessions_controller_name
@@ -200,19 +211,19 @@ module Somatics
       end
       
       def sessions_controller_file_path
-        controller_file_path
+        file_name + '_sessions'
       end
       
       def sessions_controller_singular_name
-        controller_name
+        sessions_controller_file_name
       end
       
       def sessions_controller_plural_name
-        controller_name
+        sessions_controller_file_name.pluralize
       end
       
       def sessions_controller_routing_name  
-        singular_name
+        sessions_controller_singular_name
       end      
       
       def sessions_controller_routing_path
@@ -220,11 +231,11 @@ module Somatics
       end
       
       def sessions_controller_class_name
-        class_name + 'Session'
+        class_name + 'Sessions'
       end
       
       def sessions_controller_controller_name
-        controller_plural_name
+        sessions_controller_plural_name
       end
       
       def sessions_controller_file_name
@@ -232,7 +243,7 @@ module Somatics
       end
       
       def sessions_controller_table_name
-        controller_plural_name
+        sessions_controller_plural_name
       end
       
       def controller_plural_name

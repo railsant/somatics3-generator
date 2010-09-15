@@ -1,4 +1,5 @@
 <%% form_tag <%= sessions_controller_routing_name %>_path, :id => 'login-form' do %>
+<p><%%= flash[:error] %></p>
 <table>
   <tbody>
     <tr>

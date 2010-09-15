@@ -1,8 +1,8 @@
 <h1>Sign up as a new user</h1>
 <%% @<%= file_name %>.password = @<%= file_name %>.password_confirmation = nil %>
 
-<%%= error_messages_for :<%= file_name %> %>
-<%% form_for :<%= file_name %>, :url => <%= sessions_controller_routing_name %>_register_path do |f| -%>
+<%% form_for :<%= file_name %>, :url => <%= file_name %>_register_path do |f| -%>
+<%%= f.error_messages %>
 <p><%%= label_tag 'login' %><br/>
 <%%= f.text_field :login %></p>
 

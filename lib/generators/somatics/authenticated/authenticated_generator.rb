@@ -15,7 +15,7 @@ module Somatics
       # end
       
       argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
-      class_option :namespace, :banner => "NAME", :type => :string
+      class_option :namespace, :banner => "NAME", :type => :string, :default => ''
       
       class_option :skip_routes,          :type => :boolean, :desc => "Don't generate a resource line in config/routes.rb."
       class_option :skip_migration,       :type => :boolean, :desc => "Don't generate a migration file for this model."
@@ -201,11 +201,11 @@ module Somatics
       protected 
       
       def namespace_class
-        options[:namespace].classify
+        # options[:namespace].classify
       end
       
       def namespace_name
-        options[:namespace].underscore
+        # options[:namespace].underscore
       end
       
       def sessions_controller_name

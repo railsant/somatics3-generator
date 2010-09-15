@@ -30,6 +30,8 @@ plugin 'tinymce_hammer',
   :git => 'git://github.com/trevorrowe/tinymce_hammer.git'
 plugin 'to_xls',
   :git => 'git://github.com/arydjmal/to_xls.git'
+plugin 'dynamic_form', 
+  :git => 'git://github.com/rails/dynamic_form.git'
 
 rakefile "setup_svn.rake" do
   <<-TASK
