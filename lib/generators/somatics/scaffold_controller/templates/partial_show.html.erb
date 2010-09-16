@@ -1,7 +1,7 @@
 <table class="attributes" width="100%">
 <tbody> 
   <tr>
-		<td colspan="2"><br/><h3><%%= "#{<%= class_name %>.human_name} #{t('Information')}" %></h3></td>
+		<td colspan="2"><br/><h3><%%= "#{<%= class_name %>.model_name.human} #{t('Information')}" %></h3></td>
 	</tr>
 <% if options[:admin_authenticated] || options[:authenticated] -%>
 	<tr>

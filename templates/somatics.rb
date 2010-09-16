@@ -96,7 +96,8 @@ environment 'config.autoload_paths += %W(#{config.root}/lib)'
 generate "somatics:authenticated user"
 generate "somatics:authenticated_controller admin/user --model=User"
 
-run %(rails runner "User.create(:name => 'Admin', :login => 'admin', :password => 'somatics', :password_confirmation => 'somatics', :email => 'admin@admin.com')")
+run %(rails runner "User.create(:name => 'Admin', :login => 'admin', :password => 'somatics', :password_confirmation => 'somatics', :email => 'admin@admin.com')") if yes?(%(Create Default Admin User (username:admin, password:somatics)?))
+
 
 # 
 # generate "tinymce_installation"
