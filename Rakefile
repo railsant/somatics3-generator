@@ -14,6 +14,9 @@ begin
     gem.rdoc_options += FileList['lib/**/templates/*'].to_a.collect{|f| "--exclude=#{f}" }
     # gem.rdoc_options << "--exclude='lib/**/templates/*'"
     gem.rubyforge_project = 'somatics3'
+    gem.add_dependency 'will_paginate', "~> 3.0.pre2"
+    gem.add_dependency 'prawn', "0.6.3"
+    gem.add_dependency 'json'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::RubyforgeTasks.new do |rubyforge|

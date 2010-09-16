@@ -1,4 +1,4 @@
-class <%= controller_plural_name.camelize %>Controller < ApplicationController
+class <%= controller_class_name %>Controller < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include <%= model_class_name %>AuthenticatedSystem
   
