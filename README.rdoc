@@ -1,17 +1,91 @@
-= somatics3-generators
+=== Welcome to Somatics3
 
-Description goes here.
+Somatics3 is next generation open source scaffolding template that kick-starts your next Rails project. 
+Active development has started in July 2010; new features, enhancements, and updates appear
+on daily basis.
 
-== Note on Patches/Pull Requests
- 
-* Fork the project.
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
+Here are the steps to get Somatics up and running on your system.
 
-== Copyright
+Somatics3 Support Rails 3 Now!
 
-Copyright (c) 2010 tkwong. See LICENSE for details.
+
+=== System Requirements
+
+* Ruby v1.8.7 or v1.9.2
+* Ruby on Rails v3.0+ 
+* MySQL v4.1.1 or later (v5+ is recommended) or SQLite v3.4 or later
+
+
+== Getting Started
+
+1. Install \Somatics at the command prompt if you haven't yet:
+
+    gem install somatics3-generators
+
+2. At the command prompt, create a new \Somatics application:
+
+    somatics new myapp
+
+   where "myapp" is the application name.
+
+3. Change directory to +myapp+ and start the web server:
+
+    cd myapp; rails server
+
+   Run with <tt>--help</tt> for options.
+   
+4. Open up http://localhost:3000/admin  and login with username ‘admin’ and password ‘somatics’.
+
+=== Downloads
+
+* Git source code repository: git://github.com/inspiresynergy/somatics3-generators.git
+* .zip or .tgz archives: http://github.com/inspiresynergy/somatics3-generators/downloads
+
+=== Resources
+
+* Home page: http://www.somaticsapp.com
+* Project page: http://github.com/inspiresynergy/somatics3-generators/tree/master
+* Features and bugs: http://somatics.lighthouseapp.com
+* Twitter commit updates: http://twitter.com/somaticsapp
+* Discussion group for developers: http://groups.google.com/group/somaticsapp
+* IRC channel: #somaticsapp on irc.freenode.net
+
+=== Generate the Admin Model
+
+You can test drive Somatics by generating models. 
+
+   $ rails generate somatics:scaffold products title:string description:text
+
+Among other things the generator creates admin user records and administration panels. 
+You can log in the admin panel using the default login and password.(+admin+/+password+)
+The admin site is at http://localhost:3000/admin .
+
+=== Deploying The App
+
+TODO
+
+=== For Developers
+
+TODO
+
+=== Features
+
+Somatic is open source software and relies on your contributions to grow!
+
+http://github.com/inspiresynergy/somatics3-generators
+
+GitHub always contains the latest BaseApp code. Fork your own development branch here if you wish to contribute code.
+
+Pull requests should be send to ‘inspiresynergy’ to include them in the main Somatics code base.
+
+http://inspiresynergy.lighthouseapp.com/projects/53315-somatics/overview
+
+Bug reports and feature requests should be posted in LightHouse.
+
+Bugs always have priority over new features! But, you’re free to help out with whatever you want.
+
+=== Credits
+
+Somatics is developed by Inspire Synergy – Benjamin Wong, Gary Or and a whole bunch of cool contributors.
+
+Somatics is released to the public under the MIT license.

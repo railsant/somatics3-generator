@@ -10,6 +10,7 @@ template_path = File.expand_path(File.dirname(__FILE__) + '/../templates')
 
 args = ARGV.dup
 ARGV.clear
+args.unshift('new') if args[0] != 'new'
 # path = args.shift.strip rescue '.'
 
 # a = File.expand_path(path)

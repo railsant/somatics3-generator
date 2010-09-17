@@ -1,0 +1,14 @@
+<h2><%%= "#{t('New')} #{<%= class_name %>.model_name.human}" %></h2>
+<%% form_for([:admin, @<%= singular_name %>]) do |f| %>
+  <%%= f.error_messages %>
+  <div class="issue">
+  <%%= render :partial => 'form' , :locals => {:f => f} %>
+  </div>
+  <%%= f.submit t('Create') %>
+<%% end %>
+<%%= link_to t('Back'), admin_<%= plural_name %>_path %>
+
+<%% content_for :sidebar do %>
+  <h3>Actions</h3>
+  <%%= link_to "#{t('Back_to')} #{<%= class_name %>.model_name.human}", admin_<%= plural_name %>_path %>
+<%% end %>

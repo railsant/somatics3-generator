@@ -97,21 +97,21 @@ module Somatics
         unless options[:skip_routes]
           route_config =  class_path.collect{|namespace| "namespace :#{namespace} do " }.join(" ")
           route_config << "\n"
-          route_config << %Q{match '#{file_name}_signup' => '#{controller_plural_name}#new'}
+          route_config << %Q{    match '#{file_name}_signup' => '#{controller_plural_name}#new'}
           route_config << "\n"
-          route_config << %Q{match '#{file_name}_register' => '#{controller_plural_name}#create'}
+          route_config << %Q{    match '#{file_name}_register' => '#{controller_plural_name}#create'}
           route_config << "\n"
-          route_config << %Q{match '#{file_name}_login' => '#{sessions_controller_controller_name}#new'}
+          route_config << %Q{    match '#{file_name}_login' => '#{sessions_controller_controller_name}#new'}
           route_config << "\n"
-          route_config << %Q{match '#{file_name}_logout' => '#{sessions_controller_controller_name}#destroy'}
+          route_config << %Q{    match '#{file_name}_logout' => '#{sessions_controller_controller_name}#destroy'}
           route_config << "\n"
-          route_config << "match '/activate/:activation_code' => '#{ controller_plural_name }#activate', :as => :activate, :activation_code => nil"
+          route_config << "    match '/activate/:activation_code' => '#{ controller_plural_name }#activate', :as => :activate, :activation_code => nil"
           route_config << "\n"
-          route_config << "resource #{ sessions_controller_singular_name.to_sym.inspect }, :only => [:new, :create, :destroy]"
+          route_config << "    resource #{ sessions_controller_singular_name.to_sym.inspect }, :only => [:new, :create, :destroy]"
           route_config << "\n"
-          route_config << "resources #{ controller_plural_name.to_sym.inspect }"
+          route_config << "    resources #{ controller_plural_name.to_sym.inspect }"
           route_config << "\n"
-          route_config << " end" * class_path.size
+          route_config << "  end" * class_path.size
           route route_config
         end
       end

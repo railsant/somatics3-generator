@@ -14,6 +14,7 @@ Rails::Generators.hidden_namespaces << "rails"
     "#{template}:helper",
     "#{template}:authenticated",
     "#{template}:authenticated_controller",
+    "#{template}:settings_controller",
   ]
 end
 

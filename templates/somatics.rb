@@ -90,24 +90,19 @@ rakefile "setup_svn.rake" do
 end
 
 generate "somatics:install"
+# generate "tinymce_installation"
+
 environment 'config.autoload_paths += %W(#{config.root}/lib)'
 generate "somatics:authenticated user"
 generate "somatics:authenticated_controller admin/user --model=User"
 
+generate "somatics:settings"
+
 rake "db:create"
 rake "db:migrate"
 
-run %(rails runner "User.create(:name => 'Admin', :login => 'admin', :password => 'somatics', :password_confirmation => 'somatics', :email => 'admin@admin.com')") if yes?(%(Create Default Admin User (username:admin, password:somatics)?))
+rake "somatics:create_user" if yes?(%(Create Default Admin User (username:admin, password:somatics)?))
 
-
-# 
-# generate "tinymce_installation"
-# generate "admin_controllers"
-# generate "admin_scaffold user --admin-authenticated"
-# generate "admin_setting"
-# 
-# rake "db:create"
-# rake "db:migrate"
 
 # unless app_name.blank?
 #   run "git init"

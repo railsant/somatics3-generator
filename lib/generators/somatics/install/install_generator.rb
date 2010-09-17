@@ -47,12 +47,25 @@ module Somatics
         directory "config/locales"
       end
       
+      def default_admin
+        rakefile "somatics.rake" do 
+          <<-RUBY
+namespace :somatics do
+  desc "Create Default Admin User"
+  task :create_user => :environment do
+    User.find_or_create_by_name(:name => 'Admin', :login => 'admin', :password => 'somatics', :password_confirmation => 'somatics', :email => 'admin@admin.com')
+  end
+end
+          RUBY
+        end
+      end
+      
       def add_route
         route_config = ""
-        route_config << "\tnamespace :#{options[:namespace]} do \n" if options[:namespace].present?
-        route_config << "\t\troot :to => 'home#index'\n"
-        route_config << "\t\tmatch 'home' => 'home#index'\n"
-        route_config << "\tend\n" if options[:namespace].present?
+        route_config << "  namespace :#{options[:namespace]} do \n" if options[:namespace].present?
+        route_config << "    root :to => 'home#index'\n"
+        route_config << "    match 'home' => 'home#index'\n"
+        route_config << "  end\n" if options[:namespace].present?
         route route_config
       end
       

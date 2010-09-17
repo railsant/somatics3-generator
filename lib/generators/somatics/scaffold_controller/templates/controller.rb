@@ -1,4 +1,4 @@
-class <%=namespace_class%>::<%= controller_class_name %>Controller < Admin::AdminController
+class <%=namespace_class%>::<%= controller_class_name %>Controller < <%=namespace_class%>::AdminController
   
   # Redmine Filters
   # available_filters :id,  {:name => 'ID', :type => :integer, :order => 1}

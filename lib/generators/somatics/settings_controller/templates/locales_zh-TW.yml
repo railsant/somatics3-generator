@@ -1,0 +1,28 @@
+<%- 
+require 'net/http'
+require 'uri'
+require 'json'
+class GoogleTranslate
+  def self.t(text)
+    uri = URI.parse('http://ajax.googleapis.com/ajax/services/language/translate')
+    JSON.parse(Net::HTTP.post_form(uri, {"q" => text, "langpair" => "en|zh-TW", "v" => '1.0'}).body)['responseData']['translatedText'] rescue text.humanize
+  end
+end
+-%>
+"zh-TW":
+  activerecord:
+    models:
+      <%= singular_name %>: <%= GoogleTranslate.t singular_name.humanize %>
+    attributes:
+      <%= singular_name %>:
+<% if options[:authenticated] -%>
+        login: 註冊
+        name: 名稱
+        email: 電子郵件
+        created_at: 註冊日期
+        password: 密碼
+        password_confirmation: 確認密碼
+<% end -%>
+<% attributes.each do |attribute| -%>
+        <%= attribute.name %>: <%= GoogleTranslate.t attribute.name.humanize %>
+<% end -%>
