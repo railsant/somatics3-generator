@@ -31,3 +31,5 @@
   no_data_available: 未有可用的資料
   Add: 加入
   Cancel: 取消
+  Sort_by_this_field: 以此列排序
+  sort_by: sort by {{field}}

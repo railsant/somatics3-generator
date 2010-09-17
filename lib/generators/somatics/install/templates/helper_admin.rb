@@ -19,24 +19,19 @@ module Admin::AdminHelper
   end
 
   def sort_asc_desc_helper(model_name, param)
-    result = image_tag('admin/sort_asc.png') if params[:"#{model_name}_sort"] == param
-    result = image_tag('admin/sort_desc.png') if params[:"#{model_name}_sort"] == param + "_reverse"
+    result = image_tag('somatics/sort_asc.png') if params[:"#{model_name}_sort"] == param
+    result = image_tag('somatics/sort_desc.png') if params[:"#{model_name}_sort"] == param + "_reverse"
     return result || ''
   end
 
   def sort_link_helper(text, model_name ,param)
     key = param
     key += "_reverse" if params[:"#{model_name}_sort"] == param
-    options = {
-      :url => {:action => 'index', :params => params.merge({:"#{model_name}_sort" => key, :page => nil})},
-      :update => 'content',
-      :method => :get
-    }
     html_options = {
-      :title => "Sort by this field",
-      :href => url_for(:action => 'index', :params => params.merge({:"#{model_name}_sort" => key, :page => nil}))
+      :title => I18n.t("sort_by",:field => text),
+      :remote=>true
     }
-    link_to(text + sort_asc_desc_helper(model_name,param), options, html_options,:remote=>true)
+    link_to(text, params.merge({:"#{model_name}_sort" => key}), html_options)  + sort_asc_desc_helper(model_name,param)
   end
 
   def operators_for_select(filter_type)

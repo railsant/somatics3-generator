@@ -31,3 +31,5 @@ en:
   no_data_available: No Data Available
   Add: Add
   Cancel: Cancel
+  Sort_by_this_field: Sort by this field
+  sort_by: sort by {{field}}
