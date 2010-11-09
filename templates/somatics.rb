@@ -7,6 +7,7 @@ gem 'prawn', :version => '0.6.3'
 gem 'somatics3-generators', :group => :development
 gem 'json'
 gem 'meta_search'
+gem 'paper_trail'
 
 plugin 'faster_csv',
   :git => 'git://github.com/circle/fastercsv.git'
@@ -83,6 +84,7 @@ end
 
 generate "somatics:install"
 # generate "tinymce_installation"
+generate 'paper_trail'
 
 environment 'config.autoload_paths += %W(#{config.root}/lib)'
 generate "somatics:authenticated user"

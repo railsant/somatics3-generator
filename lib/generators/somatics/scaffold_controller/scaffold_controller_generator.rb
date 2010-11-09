@@ -71,6 +71,10 @@ module Somatics
 RUBY
       end
       
+      def inject_paper_trail
+        inject_into_class "app/models/#{singular_name}.rb", class_name, "  has_paper_trail :ignore => [:updated_at]\n"
+      end
+      
       # Test Cases
       hook_for :test_framework, :as => :scaffold 
       

@@ -72,7 +72,11 @@ end
       def libs
         directory "lib"
       end
-      
+
+      def paper_trail
+        template 'partial_versions.html.erb', File.join('app/views/admin/shared', "_versions.html.erb")
+        template 'initializer_paper_trail.rb', File.join('config/initializers', "paper_trail.rb")
+      end
     end
   end
 end
