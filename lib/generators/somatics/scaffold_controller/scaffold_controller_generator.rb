@@ -18,6 +18,7 @@ module Somatics
       class_option :header, :type => :boolean, :default => true, :desc => "generate header menu tab"
       class_option :locales, :type => :array, :banner => "LOCALE LOCALE", :default => %w( en zh-TW ),
                              :desc => "Supported Locales"
+      class_option :skip_auditing, :type => :boolean, :default => false, :desc => "Don't generate auditing information."
 
       def create_controller_files
         template 'controller.rb', File.join('app/controllers', options[:namespace], class_path, "#{controller_file_name}_controller.rb")
@@ -34,7 +35,6 @@ module Somatics
         template "view_edit.html.erb",        File.join('app/views',options[:namespace], class_path, controller_file_name, "edit.html.erb"    )
         template "builder_index.xml.builder", File.join('app/views',options[:namespace], class_path, controller_file_name, "index.xml.builder")
         template "builder_index.xls.builder", File.join('app/views',options[:namespace], class_path, controller_file_name, "index.xls.builder")
-        template "builder_index.pdf.prawn",   File.join('app/views',options[:namespace], class_path, controller_file_name, "index.pdf.prawn"  )
       end
       
       def add_header_menu_tab
@@ -61,6 +61,30 @@ module Somatics
         route route_config
       end
       
+      def inject_somatics_filters
+        filters = ["  # has_filter :id, :integer\n", "  # has_filter :created_at, :date\n"]
+        filters |= attributes.collect do |attribute|
+          "  # has_filter :#{attribute.name}, :#{attribute.type}\n"
+        end
+        # FIXME The model generator removes the model.rb already
+        if File.exists?("app/models/#{singular_name}.rb")
+          inject_into_class "app/models/#{singular_name}.rb", class_name, filters.join('')
+          inject_into_class "app/models/#{singular_name}.rb", class_name,
+<<-RUBY
+  # Somatics Filter (Reference: http://github.com/inspiresynergy/somatics_filter)
+RUBY
+        end
+      end
+      
+      def inject_paper_trail
+        unless options[:skip_auditing]
+          # FIXME The model generator removes the model.rb already
+          if File.exists?("app/models/#{singular_name}.rb")
+            inject_into_class "app/models/#{singular_name}.rb", class_name, "  has_paper_trail :ignore => [:updated_at]\n"
+          end
+        end
+      end
+      
       # Test Cases
       hook_for :test_framework, :as => :scaffold 
       
@@ -79,61 +103,6 @@ module Somatics
       # hook_for :helper, :as => :scaffold do |invoked|
       #         invoke invoked, [ controller_name ]
       #       end
-      
-      # # Controller, helper, views, test and stylesheets directories.
-      # m.directory(File.join('app/models', class_path))
-      # m.directory(File.join('app/controllers', controller_class_path))
-      # m.directory(File.join('app/helpers', controller_class_path))
-      # m.directory(File.join('app/views', controller_class_path, controller_file_name))
-      # m.directory(File.join('app/views', controller_class_path, "shared"))
-      # m.directory(File.join('test/functional', controller_class_path))
-      # m.directory(File.join('test/unit', class_path))
-      # m.directory(File.join('test/unit/helpers', controller_class_path))
-      # m.directory(File.join('public/stylesheets', class_path))
-      # m.directory(File.join('public/javascripts', class_path))
-      # 
-      # m.template 'controller.rb', File.join('app/controllers', controller_class_path, "#{controller_file_name}_controller.rb")
-      # m.template 'helper.rb',     File.join('app/helpers',     controller_class_path, "#{controller_file_name}_helper.rb")
-      # 
-      # # Views and Builders
-      # m.template "partial_form.html.erb", File.join('app/views', controller_class_path, controller_file_name, "_form.html.erb")
-      # m.template "partial_list.html.erb", File.join('app/views', controller_class_path, controller_file_name, "_list.html.erb")
-      # m.template "partial_show.html.erb", File.join('app/views', controller_class_path, controller_file_name, "_show.html.erb")
-      # m.template "partial_edit.html.erb", File.join('app/views', controller_class_path, controller_file_name, "_edit.html.erb")
-      # m.template "partial_bulk.html.erb", File.join('app/views', controller_class_path, controller_file_name, "_bulk.html.erb")
-      # m.template "view_index.html.erb",   File.join('app/views', controller_class_path, controller_file_name, "index.html.erb")
-      # m.template "view_new.html.erb",     File.join('app/views', controller_class_path, controller_file_name, "new.html.erb")
-      # m.template "view_show.html.erb",    File.join('app/views', controller_class_path, controller_file_name, "show.html.erb")
-      # m.template "view_edit.html.erb",    File.join('app/views', controller_class_path, controller_file_name, "edit.html.erb")
-      # m.template "builder_index.xml.builder", File.join('app/views', controller_class_path, controller_file_name, "index.xml.builder")
-      # m.template "builder_index.xls.builder", File.join('app/views', controller_class_path, controller_file_name, "index.xls.builder")
-      # m.template "builder_index.pdf.prawn",   File.join('app/views', controller_class_path, controller_file_name, "index.pdf.prawn")
-      # 
-      # # Locales templates 
-      # %w( en zh-TW ).each do |locale|
-      #   m.template "locales_#{locale}.yml", File.join('config/locales', "#{controller_file_name}_#{locale}.yml")
-      # end
-      # 
-      # # Application, Layout and Stylesheet and Javascript.
-      # # m.template_without_destroy 'layout.html.erb', File.join('app/views/layouts', controller_class_path, "admin.html.erb"), :collision => :skip
-      # # m.template_without_destroy 'application_helper.rb', File.join('app/helpers', controller_class_path, "admin_helper.rb"), :collision => :skip
-      # # m.template_without_destroy 'partial_menu.html.erb', File.join('app/views', controller_class_path, "shared", "_menu.html.erb"), :collision => :skip
-      # m.header_menu(controller_file_name) unless options[:no_header_menu]
-      # # m.template_without_destroy 'context_menu.js', 'public/javascripts/context_menu.js', :collision => :skip
-      # # m.template_without_destroy 'select_list_move.js', 'public/javascripts/select_list_move.js', :collision => :skip
-      # # m.template('style.css', 'public/stylesheets/scaffold.css')
-      # 
-      # m.template('functional_test.rb', File.join('test/functional', controller_class_path, "#{controller_file_name}_controller_test.rb"))
-      # m.template('helper_test.rb',     File.join('test/unit/helpers', controller_class_path, "#{controller_file_name}_helper_test.rb"))
-      # 
-      # m.admin_route_resources controller_file_name
-      # 
-      # if options[:admin_authenticated] || options[:authenticated]
-      #   generate_sessions_controller(m)
-      # else
-      #   m.dependency 'model', [name] + @args, :collision => :skip 
-      # end
-      
     end
   end
 end

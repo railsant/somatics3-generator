@@ -11,6 +11,8 @@
 
 <!-- More List View -->
 
+<% unless options[:skip_auditing] %><%%= paper_trail_for @<%= singular_name %> %><% end %>
+
 <div id="update" style="display:none;">
   <h3><%%= t('Update') %></h3>
   <div id="focus"></div>

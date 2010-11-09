@@ -1,16 +1,4 @@
 class <%=namespace_class%>::<%= controller_class_name %>Controller < <%=namespace_class%>::AdminController
-  
-  # Redmine Filters
-  # available_filters :id,  {:name => 'ID', :type => :integer, :order => 1}
-  <% attributes.each_with_index do |attribute, index| -%>
-  # available_filters :<%=attribute.name%>,  {:name => '<%=attribute.name.humanize%>', :type => :<%=attribute.type%>, :order => <%=index%>}
-  <% end -%>
-
-  # default_filter :id
-  <% attributes.each do |attribute| -%>
-  # default_filter :<%=attribute.name%>
-  <% end %>
-
   # GET /<%= plural_table_name %>
   # GET /<%= plural_table_name %>.xml
   def index
@@ -18,13 +6,13 @@ class <%=namespace_class%>::<%= controller_class_name %>Controller < <%=namespac
     @headers = <%= attributes.collect {|attribute| attribute.name.humanize}.inspect %>
     respond_to do |format|
       format.html {
-        @<%= plural_table_name %> = <%= class_name %>.paginate(:page => params[:<%= plural_table_name %>_page], :conditions => query_statement, :order => (params[:<%= singular_name %>_sort].gsub('_reverse', ' DESC') unless params[:<%= singular_name %>_sort].blank?))
+        @<%= plural_table_name %> = <%= class_name %>.apply_query(params).paginate(:page => params[:<%= plural_table_name %>_page], :order => (params[:<%= singular_name %>_sort].gsub('_reverse', ' DESC') unless params[:<%= singular_name %>_sort].blank?))
       }
       format.xml { 
-        @<%= plural_table_name %> = <%= class_name %>.all(:conditions => query_statement)
+        @<%= plural_table_name %> = <%= class_name %>.apply_query(params)
       }
       format.csv {
-        @<%= plural_table_name %> = <%= class_name %>.all(:conditions => query_statement)
+        @<%= plural_table_name %> = <%= class_name %>.apply_query(params)
         csv_string = FasterCSV.generate do |csv|
         	csv << @headers
         	@<%= plural_table_name %>.each do |<%= singular_name %>|
@@ -35,13 +23,8 @@ class <%=namespace_class%>::<%= controller_class_name %>Controller < <%=namespac
   				:disposition => "attachment; filename=<%= plural_table_name %>.csv"
       }
       format.xls {
-        @<%= plural_table_name %> = <%= class_name %>.all(:conditions => query_statement)
+        @<%= plural_table_name %> = <%= class_name %>.apply_query(params)
         render :xls => @<%= plural_table_name %>
-      }
-      format.pdf {
-        params[:fields] = @fields
-        @<%= plural_table_name %> = <%= class_name %>.all(:conditions => query_statement)
-        prawnto :prawn => {:text_options => { :wrap => :character }, :page_layout => :portrait }
       }
     end
   end

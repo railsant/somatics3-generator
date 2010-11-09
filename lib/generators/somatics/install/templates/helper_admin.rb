@@ -33,9 +33,9 @@ module Admin::AdminHelper
     }
     link_to(text, params.merge({:"#{model_name}_sort" => key}), html_options)  + sort_asc_desc_helper(model_name,param)
   end
-
-  def operators_for_select(filter_type)
-    Query.operators_by_filter_type[filter_type].collect {|o| [(Query.operators[o].to_s.humanize), o]}
+  
+  def paper_trail_for(object)
+    render 'admin/shared/versions', :obj => object
   end
   
   def excel_document(xml, &block)

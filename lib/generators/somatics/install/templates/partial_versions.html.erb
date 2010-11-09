@@ -1,0 +1,56 @@
+<!-- Audit Trail-->
+<h3>Audit Trail</h3>
+<div class="autoscroll">
+<table class="list issues">
+	<thead>
+		<tr>
+      <th title="">Version #</th>
+      <th title="">Modified at</th>
+      <th title="">Modified by</th>
+      <th title="">Action</th>
+      <th title="">Changes</th>
+		</tr>
+	</thead>
+	<tbody>
+	<%% unless obj.versions.empty? %>
+		<%% obj.versions.each do |version| %>		
+		<tr id="<%% dom_id(version)%>" class="hascontextmenu <%%= cycle 'odd' , 'even' %> issue">
+      <td><%%= version.index %></td>
+      <td><%%= version.created_at.to_s(:db) %></td>
+			<td>
+				<%% unless version.whodunnit.to_i == 0 %>
+      		<%%= User.find(version.whodunnit.to_i).name %>
+				<%% else %>
+					<%%= version.whodunnit || 'N/A' %>
+				<%% end%>
+			</td>
+      <td><%%= version.event.humanize %></td>
+			<td class="subject">			
+				<%% if version.event == 'create'%>
+					Initial Create
+				<%% else %>
+					<%% unless version.next.nil?  %>
+						<%% version.reify.diff(version.next.reify).each do |t| %>
+							<%% unless t.first == :updated_at %>
+								<p>"<b><%%= t.first.to_s.humanize %></b>" was changed from "<b><%%= t.last.first.to_s rescue '' %></b>" to "<b><%%= t.last.last.to_s rescue '' %></b>"</p>
+							<%% end %>
+						<%% end rescue 'Undetermined Changes'%>
+					<%% else %>	
+						<%% version.reify.diff(obj).each do |t| %>
+							<%% unless t.first == :updated_at %>
+								<p>"<b><%%= t.first.to_s.humanize %></b>" was changed from "<b><%%= t.last.first.to_s rescue '' %></b>" to "<b><%%= t.last.last.to_s rescue '' %></b>"</p>
+							<%% end %>
+						<%% end rescue 'Undetermined Changes'%>
+					<%% end %>
+				<%% end %>
+			</td>
+    </tr>		  
+		<%% end %>
+	<%% else -%>
+		<tr class="datos"> 
+		  <td colspan="100" align="center"><%%=t :no_data_available%></td> 
+		</tr>
+	<%% end -%>
+	</tbody>
+</table>
+</div>
