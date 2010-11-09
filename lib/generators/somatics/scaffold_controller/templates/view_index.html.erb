@@ -2,8 +2,8 @@
 
 <h2><%%= <%= class_name %>.model_name.human %></h2>
 
-<!-- Redmine Filters-->
-<%%#= filters %>
+<!-- Somatics Filters-->
+<%%= somatics_filter_for :<%= singular_name %>%>
 
 <%%# form_tag bulk_admin_<%= plural_name %>_path, :id => :form do -%>
 <div class="autoscroll">

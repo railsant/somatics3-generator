@@ -59,6 +59,18 @@ module Somatics
         route route_config
       end
       
+      def inject_somatics_filters
+        filters = ["  # has_filter :id, :integer\n", "  # has_filter :created_at, :date\n"]
+        filters |= attributes.collect do |attribute|
+          "  # has_filter :#{attribute.name}, :#{attribute.type}\n"
+        end
+        inject_into_class "app/models/#{singular_name}.rb", class_name, filters.join('')
+        inject_into_class "app/models/#{singular_name}.rb", class_name,
+<<-RUBY
+  # Somatics Filter (Reference: http://github.com/inspiresynergy/somatics_filter)
+RUBY
+      end
+      
       # Test Cases
       hook_for :test_framework, :as => :scaffold 
       

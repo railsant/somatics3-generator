@@ -3,7 +3,7 @@
 <h2><%%= <%= class_name %>.model_name.human %></h2>
 
 <!-- Redmine Filters-->
-<%%#= filters %>
+<%%= somatics_filter_for :setting %>
 
 <div class="autoscroll">
   <%%= render :partial => 'list', :locals => {:<%= plural_name %> => @<%= plural_name %>} %>

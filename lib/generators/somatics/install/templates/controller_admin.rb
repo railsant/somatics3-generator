@@ -5,7 +5,6 @@ class Admin::AdminController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   
-  include RedmineFilter
   include UserAuthenticatedSystem
   before_filter :user_login_required
   

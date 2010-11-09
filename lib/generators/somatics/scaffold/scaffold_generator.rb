@@ -19,7 +19,6 @@ module Somatics
 
       # remove_hook_for :resource_controller
       # remove_class_option :actions
-      
     end
   end
 end
