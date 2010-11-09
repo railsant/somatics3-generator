@@ -35,7 +35,6 @@ module Somatics
         template "view_edit.html.erb",        File.join('app/views',options[:namespace], class_path, controller_file_name, "edit.html.erb"    )
         template "builder_index.xml.builder", File.join('app/views',options[:namespace], class_path, controller_file_name, "index.xml.builder")
         template "builder_index.xls.builder", File.join('app/views',options[:namespace], class_path, controller_file_name, "index.xls.builder")
-        template "builder_index.pdf.prawn",   File.join('app/views',options[:namespace], class_path, controller_file_name, "index.pdf.prawn"  )
       end
       
       def add_header_menu_tab

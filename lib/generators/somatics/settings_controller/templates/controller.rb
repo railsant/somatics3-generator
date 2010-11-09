@@ -26,11 +26,6 @@ class <%=namespace_class%>::<%= controller_class_name %>Controller < <%=namespac
         @<%= table_name %> = <%= class_name %>.apply_query(params)
         render :xls => @<%= table_name %>
       }
-      format.pdf {
-        params[:fields] = @fields
-        @<%= table_name %> = <%= class_name %>.apply_query(params)
-        prawnto :prawn => {:text_options => { :wrap => :character }, :page_layout => :portrait }
-      }
     end
   end
 

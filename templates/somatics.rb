@@ -3,7 +3,6 @@
 # repo_entered = ask 'Type your repository for the project (SVN), followed by [ENTER]:'
 
 gem 'will_paginate', :version => "~> 3.0.pre2"
-gem 'prawn', :version => '0.6.3'
 gem 'somatics3-generators', :group => :development
 gem 'json'
 gem 'meta_search'
@@ -12,8 +11,6 @@ gem 'tiny_mce'
 
 plugin 'faster_csv',
   :git => 'git://github.com/circle/fastercsv.git'
-plugin 'prawnto',
-  :git => 'git://github.com/thorny-sun/prawnto.git'
 plugin 'somatics_filter',
   :git => 'git://github.com/inspiresynergy/somatics_filter.git'
 plugin 'restful_authentication',
