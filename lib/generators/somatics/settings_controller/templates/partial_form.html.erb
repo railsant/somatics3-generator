@@ -9,7 +9,7 @@
 	</tr>	
 	<tr>
 	  <td><b><%%= <%= class_name %>.human_attribute_name(:value) %></b></td>
-	  <td><%%= f.send(@<%= singular_name %>.input_field_type, :value) %></td>
+	  <td><%%= raw @<%= singular_name %>.input_field(f) %></td>
 	</tr>
 </tbody>
 </table>

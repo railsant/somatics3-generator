@@ -8,6 +8,7 @@ gem 'somatics3-generators', :group => :development
 gem 'json'
 gem 'meta_search'
 gem 'paper_trail'
+gem 'tiny_mce'
 
 plugin 'faster_csv',
   :git => 'git://github.com/circle/fastercsv.git'
@@ -17,8 +18,6 @@ plugin 'somatics_filter',
   :git => 'git://github.com/inspiresynergy/somatics_filter.git'
 plugin 'restful_authentication',
   :git => 'git://github.com/Satish/restful-authentication.git'
-plugin 'tinymce_hammer',
-  :git => 'git://github.com/trevorrowe/tinymce_hammer.git'
 plugin 'to_xls',
   :git => 'git://github.com/arydjmal/to_xls.git'
 plugin 'dynamic_form', 

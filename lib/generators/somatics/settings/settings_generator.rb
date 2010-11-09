@@ -59,20 +59,24 @@ module Somatics
     end
   end
 
-  def input_field_type
-    case self.field_type
+  def input_field(form)
+    options = {}
+    input_field_type = case self.field_type
     when 'integer', 'string', 'float'
       'text_field'
     when 'text'
-      self.mce_editable ? 'tinymce' : 'text_area'
+      options[:class] = 'mceEditor'
+      'text_area'
     when 'boolean'
       'check_box'
     else
       'text_field'
     end
+    form.send(input_field_type, :value, options)
   end
 
   class SettingNotFound < Exception; end
+  
           RUBY
         end rescue nil
       

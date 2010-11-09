@@ -17,7 +17,7 @@
   <%%= javascript_include_tag 'somatics/prototype.js', "rails", 'somatics/effects.js', 'somatics/dragdrop.js', 'somatics/controls.js','somatics/base.js','somatics/select_list_move.js','somatics/context_menu.js' %>
   <%%= csrf_meta_tag %>
 
-  <%%#= init_tinymce_hammer_if_required %>
+  <%%= include_tiny_mce_if_needed %>
 </head>
 <body>
   <div id="wrapper">
