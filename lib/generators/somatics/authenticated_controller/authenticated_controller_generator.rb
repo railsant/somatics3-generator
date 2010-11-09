@@ -10,31 +10,29 @@ module Somatics
       extend TemplatePath
       
       class_option :namespace, :banner => "NAME", :type => :string, :default => ''
+      class_option :locales, :type => :array, :banner => "LOCALE LOCALE", :default => %w( en zh-TW ),
+                             :desc => "Supported Locales"
       
       def create_sessions_controller
         template 'sessions_controller.rb', File.join('app/controllers', options.namespace, "#{name}_sessions_controller.rb")
       end
       
-      def create_sessions_directory
+      def create_login_page
         template 'login.html.erb', File.join("app/views", options.namespace, "#{name}_sessions", 'new.html.erb')
       end
-
-      def modified_devise_route
-        inject_into_file File.join('config/routes.rb'), :after => "devise_for :#{table_name}" do
-          ", :path => '#{options.namespace}', :controllers => {:sessions => '#{File.join(options.namespace.blank? ? nil : options.namespace, "#{name}_sessions")}'}"
+      
+      def create_locales
+        options[:locales].each do |locale|
+          template "locales_#{locale}.yml", File.join('config/locales', "#{name}_sessions_#{locale}.yml")
         end
       end
-      
+
       protected
       
       def namespace_class
         options.namespace.camelize
       end
-      
-      def model_name
-        name.camelize
-      end
-      
+
       # include Rails::Generators::ResourceHelpers
       # include Rails::Generators::Migration
       # # hook_for :authenticated , :in => :somatics, :as => :scaffold, :default => 'somatics:scaffold' do |instance, command|

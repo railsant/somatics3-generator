@@ -33,7 +33,7 @@ generate "somatics:settings"
 rake "db:create"
 rake "db:migrate"
 
-if yes?(%(Create Default Admin User (username:admin, password:somatics)?))
+if yes?(%(Create Default Admin User (email:admin@somatics.com, password:somatics)?))
   rake "somatics:create_user" 
 else
   puts "You can run rake somatics:create_user to create default user"
