@@ -18,6 +18,7 @@ module Somatics
       class_option :header, :type => :boolean, :default => false, :desc => "generate header menu tab"
       class_option :locales, :type => :array, :banner => "LOCALE LOCALE", :default => %w( en zh-TW ),
                              :desc => "Supported Locales"
+      class_option :skip_auditing, :type => :boolean, :default => false, :desc => "Don't generate auditing information."
 
       def create_controller_files
         template 'controller.rb', File.join('app/controllers', options[:namespace], class_path, "#{controller_file_name}_controller.rb")
@@ -64,15 +65,23 @@ module Somatics
         filters |= attributes.collect do |attribute|
           "  # has_filter :#{attribute.name}, :#{attribute.type}\n"
         end
-        inject_into_class "app/models/#{singular_name}.rb", class_name, filters.join('')
-        inject_into_class "app/models/#{singular_name}.rb", class_name,
+        # FIXME The model generator removes the model.rb already
+        if File.exists?("app/models/#{singular_name}.rb")
+          inject_into_class "app/models/#{singular_name}.rb", class_name, filters.join('')
+          inject_into_class "app/models/#{singular_name}.rb", class_name,
 <<-RUBY
   # Somatics Filter (Reference: http://github.com/inspiresynergy/somatics_filter)
 RUBY
+        end
       end
       
       def inject_paper_trail
-        inject_into_class "app/models/#{singular_name}.rb", class_name, "  has_paper_trail :ignore => [:updated_at]\n"
+        unless options[:skip_auditing]
+          # FIXME The model generator removes the model.rb already
+          if File.exists?("app/models/#{singular_name}.rb")
+            inject_into_class "app/models/#{singular_name}.rb", class_name, "  has_paper_trail :ignore => [:updated_at]\n"
+          end
+        end
       end
       
       # Test Cases
