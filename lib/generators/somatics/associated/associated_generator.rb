@@ -52,8 +52,6 @@ module Somatics
           generator_attribute_names.each do |attr|
             puts "%-40s %s" % ["#{attr}:", self.send(attr.to_s)]  # instance_variable_get("@#{attr.to_s}"
           end
-          
-          # puts options.to_yaml
        
         end
         
@@ -66,10 +64,10 @@ module Somatics
           # look_for = /<li ><%= link_to 'Product', '\/admin\/products', :class => (match_controller?('products'))  \? 'selected' : ''%>.*<ul>/
           look_for = /<%=.*\/#{options.namespace}\/#{plural_name}.*%>[^<]*<ul[^>]*>/
           inject_into_file File.join('app/views/',options.namespace, 'shared/_menu.html.erb'), :after => look_for do 
-            str = <<RUBY
+            <<-RUBY
             
               <li><%=link_to #{class_name}.human_attribute_name(:#{associated_name}), '/#{options.namespace}/#{associated_plural_name}' %></li>
-RUBY
+            RUBY
           end
           
         end
@@ -109,22 +107,22 @@ RUBY
         
         def add_association_to_model
           inject_into_class "app/models/#{name}.rb", class_name do 
-            str = <<RUBY
+            <<-RUBY
             belongs_to :#{associated_name}
             def #{associated_name}_#{attribute_name} 
-              self.#{associated_name}.#{attribute_name} 
+              self.#{associated_name}.#{attribute_name} unless self.#{associated_name}.blank?
             end
 
             def #{associated_name}_#{attribute_name}=(#{associated_name}_#{attribute_name}) 
               self.#{associated_name} = #{associated_class_name}.find_by_#{attribute_name}(#{associated_name}_#{attribute_name}) || #{associated_class_name}.new(:#{attribute_name} => #{associated_name}_#{attribute_name})
             end
-RUBY
+            RUBY
           end
           
           inject_into_class "app/models/#{associated_name}.rb", associated_class_name do 
-            str = <<RUBY
-            has_many :#{class_name}
-RUBY
+            <<-RUBY
+              has_many :#{class_name}
+            RUBY
           end rescue nil
         end
         

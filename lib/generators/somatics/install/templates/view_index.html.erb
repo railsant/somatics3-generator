@@ -1,1 +1,46 @@
 <h2><%%= t('Overview') %></h2>
+<div id="activity">
+<%% [Date.today, Date.yesterday, 2.days.ago.to_date].each do |day|%>
+<h3><%%= time_ago_in_words day %></h3>
+<dl>
+  <%% (versions = Version.where(:created_at => day.beginning_of_day..day.end_of_day ).order('created_at desc')).each do |version|%>
+  <dt class="issue-closed  me">
+    <img class="gravatar" alt="" width="24" height="24" src="http://www.gravatar.com/avatar/<%%=Digest::MD5::hexdigest(User.find(version.whodunnit.to_i).email)%>?rating=PG&amp;size=24">
+    <span class="time"><%%=version.created_at.to_s(:db)%></span>
+    <%% description = "" %>
+    <%% [:name,:title,:label].each do |d| 
+        description = version.item.send(d) if version.item.respond_to? d
+      end
+    %>
+    <%%= link_to "#{version.item.class.model_name.human} ##{version.item.id} - #{description}", [:admin, version.item]%>
+  </dt>
+  <dd>
+    <span class="description">
+    <%% if version.event == 'create'%>
+			Initial Create
+		<%% else %>
+			<%% unless version.next.nil?  %>
+				<%% version.reify.diff(version.next.reify).each do |t| %>
+					<%% unless t.first == :updated_at %>
+						<p>"<b><%%= t.first.to_s.humanize %></b>" was changed from "<b><%%= t.last.first.to_s rescue '' %></b>" to "<b><%%= t.last.last.to_s rescue '' %></b>"</p>
+					<%% end %>
+				<%% end rescue 'Undetermined Changes'%>
+			<%% else %>	
+				<%% version.reify.diff(obj).each do |t| %>
+					<%% unless t.first == :updated_at %>
+						<p>"<b><%%= t.first.to_s.humanize %></b>" was changed from "<b><%%= t.last.first.to_s rescue '' %></b>" to "<b><%%= t.last.last.to_s rescue '' %></b>"</p>
+					<%% end %>
+				<%% end rescue 'Undetermined Changes'%>
+			<%% end %>
+		<%% end %></span>
+    <span class="author"><%%=User.find(version.whodunnit.to_i).name%></span>
+  </dd>
+  <%% end %>
+  <%% if versions.blank?%>
+    No Changes in <%%= day %>
+  <%% end %>
+</dl>
+<%% end %>
+
+</div>
+<div style="clear:both;"></div>
