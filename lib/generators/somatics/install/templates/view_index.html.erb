@@ -5,7 +5,7 @@
 <dl>
   <%% (versions = Version.where(:created_at => day.beginning_of_day..day.end_of_day ).order('created_at desc')).each do |version|%>
   <dt class="issue-closed  me">
-    <img class="gravatar" alt="" width="24" height="24" src="http://www.gravatar.com/avatar/<%%=Digest::MD5::hexdigest(User.find(version.whodunnit.to_i).email)%>?rating=PG&amp;size=24">
+    <img class="gravatar" alt="" width="24" height="24" src="http://www.gravatar.com/avatar/<%%=Digest::MD5::hexdigest((User.find(version.whodunnit.to_i).email rescue ''))%>?rating=PG&amp;size=24">
     <span class="time"><%%=version.created_at.to_s(:db)%></span>
     <%% description = "" %>
     <%% [:name,:title,:label].each do |d| 
@@ -33,7 +33,7 @@
 				<%% end rescue 'Undetermined Changes'%>
 			<%% end %>
 		<%% end %></span>
-    <span class="author"><%%=User.find(version.whodunnit.to_i).name%></span>
+    <span class="author"><%%=User.find(version.whodunnit.to_i).name rescue 'Unknown'%></span>
   </dd>
   <%% end %>
   <%% if versions.blank?%>

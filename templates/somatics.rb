@@ -84,6 +84,7 @@ generate "somatics:settings"
 puts "create and migrate the database"
 rake "db:create"
 rake "db:migrate"
+rake "db:seed"
 
 #----------------------------------------------------------------------------
 # Create a default user
