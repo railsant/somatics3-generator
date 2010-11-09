@@ -1,0 +1,6 @@
+zh-TW:
+  devise:
+    <%= name %>_sessions:
+      <%= name %>:
+        signed_in: '登入成功。'
+        signed_out: '登出成功。'

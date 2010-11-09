@@ -1,0 +1,6 @@
+en:
+  devise:
+    <%= name %>_sessions:
+      <%= name %>:
+        signed_in: 'Signed in successfully.'
+        signed_out: 'Signed out successfully.'

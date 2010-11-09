@@ -57,7 +57,7 @@ module Somatics
 namespace :somatics do
   desc "Create Default Admin User"
   task :create_user => :environment do
-    User.find_or_create_by_name(:name => 'Admin', :login => 'admin', :password => 'somatics', :password_confirmation => 'somatics', :email => 'admin@admin.com')
+    User.find_or_create_by_name(:name => 'Admin', :password => 'somatics', :password_confirmation => 'somatics', :email => 'admin@somatics.com')
   end
 end
           RUBY

@@ -30,6 +30,7 @@ gem 'json'
 gem 'meta_search'
 gem 'paper_trail'
 gem 'tiny_mce'
+gem 'devise'
 
 puts "installing gems (takes a few minutes!)..."
 run 'bundle install'
@@ -38,8 +39,6 @@ plugin 'faster_csv',
   :git => 'git://github.com/circle/fastercsv.git'
 plugin 'somatics_filter',
   :git => 'git://github.com/inspiresynergy/somatics_filter.git'
-plugin 'restful_authentication',
-  :git => 'git://github.com/Satish/restful-authentication.git'
 plugin 'to_xls',
   :git => 'git://github.com/arydjmal/to_xls.git'
 plugin 'dynamic_form', 
@@ -71,10 +70,9 @@ gsub_file 'public/robots.txt', /# Disallow/, 'Disallow'
 #----------------------------------------------------------------------------
 
 generate "somatics:install"
+generate "devise:install"
 generate 'paper_trail'
-
-generate "somatics:authenticated user"
-generate "somatics:authenticated_controller admin/user --model=User"
+generate "somatics:authenticated user --namespace=admin"
 generate "somatics:settings"
 
 #----------------------------------------------------------------------------
@@ -90,7 +88,7 @@ rake "db:seed"
 # Create a default user
 #----------------------------------------------------------------------------
 
-if yes?(%(Create Default Admin User (username:admin, password:somatics)?))
+if yes?(%(Create Default Admin User (email:admin@somatics.com, password:somatics)?))
   rake "somatics:create_user" 
 else
   puts "You can run rake somatics:create_user to create default user"

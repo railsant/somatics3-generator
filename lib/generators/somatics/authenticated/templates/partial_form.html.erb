@@ -1,0 +1,23 @@
+<table width="100%">
+<tbody>
+	<tr>
+		<td colspan="2"><br/><h3><%%= <%= class_name %>.model_name.human %></h3></td>
+	</tr>
+	<tr>
+	  <td><b><%%= <%= class_name %>.human_attribute_name(:name) %></b></td>
+	  <td><%%= f.text_field :name %></td>
+	</tr>
+	<tr>
+	  <td><b><%%= <%= class_name %>.human_attribute_name(:email) %></b></td>
+	  <td><%%= f.text_field :email %></td>
+	</tr>
+	<tr>
+	  <td><b><%%= <%= class_name %>.human_attribute_name(:password) %></b></td>
+	  <td><%%= f.password_field :password %></td>
+	</tr>
+	<tr>
+	  <td><b><%%= <%= class_name %>.human_attribute_name(:password_confirmation) %></b></td>
+	  <td><%%= f.password_field :password_confirmation %></td>
+	</tr>
+</tbody>
+</table>
