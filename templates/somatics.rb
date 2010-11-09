@@ -8,13 +8,12 @@ gem 'json'
 gem 'meta_search'
 gem 'paper_trail'
 gem 'tiny_mce'
+gem 'devise'
 
 plugin 'faster_csv',
   :git => 'git://github.com/circle/fastercsv.git'
 plugin 'somatics_filter',
   :git => 'git://github.com/inspiresynergy/somatics_filter.git'
-plugin 'restful_authentication',
-  :git => 'git://github.com/Satish/restful-authentication.git'
 plugin 'to_xls',
   :git => 'git://github.com/arydjmal/to_xls.git'
 plugin 'dynamic_form', 
@@ -79,12 +78,11 @@ end
 end
 
 generate "somatics:install"
-# generate "tinymce_installation"
+generate "devise:install"
 generate 'paper_trail'
 
 environment 'config.autoload_paths += %W(#{config.root}/lib)'
-generate "somatics:authenticated user"
-generate "somatics:authenticated_controller admin/user --model=User"
+generate "somatics:authenticated user --namespace=admin"
 
 generate "somatics:settings"
 

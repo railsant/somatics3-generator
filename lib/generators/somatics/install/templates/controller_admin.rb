@@ -5,11 +5,9 @@ class Admin::AdminController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   
-  include UserAuthenticatedSystem
-  before_filter :user_login_required
-  
   layout Proc.new { |c| c.request.format.js? ? false : 'admin' }
-  
+  before_filter :authenticate_user!
+
   uses_tiny_mce :options => {
     :theme => 'advanced',
     :theme_advanced_resizing => true,

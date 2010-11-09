@@ -27,7 +27,7 @@
         <div id="account">
           <ul>
             <li><%%= t('Logged_in_as') %> <%%= link_to current_user.name, admin_user_url(current_user) %></li>
-            <li><%%= link_to t('Logout'), admin_user_logout_url %></li>
+            <li><%%= link_to t('Logout'), destroy_user_session_url %></li>
           </ul>
         </div>
         <%% end %>
