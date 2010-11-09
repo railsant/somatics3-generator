@@ -15,7 +15,7 @@ module Somatics
       class_option :orm, :banner => "NAME", :type => :string, :required => true,
                          :desc => "ORM to generate the controller for"
       class_option :namespace, :banner => "NAME", :type => :string, :required => false, :default => "admin", :desc => "namespace to generate the controller for"
-      class_option :header, :type => :boolean, :default => false, :desc => "generate header menu tab"
+      class_option :header, :type => :boolean, :default => true, :desc => "generate header menu tab"
       class_option :locales, :type => :array, :banner => "LOCALE LOCALE", :default => %w( en zh-TW ),
                              :desc => "Supported Locales"
       class_option :skip_auditing, :type => :boolean, :default => false, :desc => "Don't generate auditing information."
@@ -38,9 +38,11 @@ module Somatics
       end
       
       def add_header_menu_tab
-        look_for = "<li><%= link_to '#{file_name.humanize}', '/admin/#{controller_file_name}', :class => (match_controller?('#{controller_file_name}'))  ? 'selected' : ''%></li>\n"
-        gsub_file File.join('app/views/admin/shared', "_menu.html.erb"), look_for, ''
-        append_file File.join('app/views/admin/shared', "_menu.html.erb"), look_for
+        if options[:header]
+          look_for = "<li><%= link_to '#{file_name.humanize}', '/admin/#{controller_file_name}', :class => (match_controller?('#{controller_file_name}'))  ? 'selected' : ''%>\n\t<ul class='sub'></ul></li>\n"
+          gsub_file File.join('app/views/admin/shared', "_menu.html.erb"), look_for, ''
+          append_file File.join('app/views/admin/shared', "_menu.html.erb"), look_for
+        end
       end
       
       def create_locales_files

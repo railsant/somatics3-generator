@@ -35,7 +35,7 @@ module Somatics
       
       def layouts
         template 'layout_admin.html.erb', File.join('app/views/layouts', "admin.html.erb")
-        template 'partial_menu.html.erb', File.join('app/views/admin/shared', "_menu.html.erb")
+        template 'partial_menu.html.erb', File.join('app/views/admin/shared', "_menu.html.erb"), :skip => true
       end
       
       def mime_type
