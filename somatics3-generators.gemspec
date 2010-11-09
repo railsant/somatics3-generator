@@ -224,17 +224,26 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<will_paginate>, ["~> 3.0.pre2"])
-      s.add_runtime_dependency(%q<prawn>, ["= 0.6.3"])
       s.add_runtime_dependency(%q<json>, [">= 0"])
+      s.add_runtime_dependency(%q<meta_search>, [">= 0"])
+      s.add_runtime_dependency(%q<paper_trail>, [">= 0"])
+      s.add_runtime_dependency(%q<tiny_mce>, [">= 0"])
+      s.add_runtime_dependency(%q<devise>, [">= 0"])
     else
       s.add_dependency(%q<will_paginate>, ["~> 3.0.pre2"])
-      s.add_dependency(%q<prawn>, ["= 0.6.3"])
       s.add_dependency(%q<json>, [">= 0"])
+      s.add_dependency(%q<meta_search>, [">= 0"])
+      s.add_dependency(%q<paper_trail>, [">= 0"])
+      s.add_dependency(%q<tiny_mce>, [">= 0"])
+      s.add_dependency(%q<devise>, [">= 0"])
     end
   else
     s.add_dependency(%q<will_paginate>, ["~> 3.0.pre2"])
-    s.add_dependency(%q<prawn>, ["= 0.6.3"])
     s.add_dependency(%q<json>, [">= 0"])
+    s.add_dependency(%q<meta_search>, [">= 0"])
+    s.add_dependency(%q<paper_trail>, [">= 0"])
+    s.add_dependency(%q<tiny_mce>, [">= 0"])
+    s.add_dependency(%q<devise>, [">= 0"])
   end
 end
 
