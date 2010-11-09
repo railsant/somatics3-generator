@@ -1,7 +1,7 @@
 <h2><%%= t('Overview') %></h2>
 <div id="activity">
 <%% [Date.today, Date.yesterday, 2.days.ago.to_date].each do |day|%>
-<h3><%%= time_ago_in_words day %></h3>
+<h3><%%= date_to_words day %></h3>
 <dl>
   <%% (versions = Version.where(:created_at => day.beginning_of_day..day.end_of_day ).order('created_at desc')).each do |version|%>
   <dt class="issue-closed  me">
