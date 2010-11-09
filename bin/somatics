@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+lib = File.expand_path(File.dirname(__FILE__) + '/../lib')
+$LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
+
+template_path = File.expand_path(File.dirname(__FILE__) + '/../templates')
+
+
+# require 'somatics'
+
+args = ARGV.dup
+ARGV.clear
+args.unshift('new') if args[0] != 'new'
+# path = args.shift.strip rescue '.'
+
+# a = File.expand_path(path)
+template = File.join(template_path,'somatics.rb')
+
+# puts "#{path} #{a} #{args.join(',')} #{template}"
+puts "rails #{args.join(' ')} -m #{template}"
+system "rails #{args.join(' ')} -m #{template}"
+
+exit

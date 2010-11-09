@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+lib = File.expand_path(File.dirname(__FILE__) + '/../lib')
+$LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
+
+template_path = File.expand_path(File.dirname(__FILE__) + '/../templates')
+
+
+# require 'somatics'
+
+args = ARGV.dup
+ARGV.clear
+path = args.shift.strip rescue '.'
+
+# a = File.expand_path(path)
+template = File.join(template_path,'somatics.rb')
+
+puts "rake rails:template LOCATION=#{template}"
+system "rake rails:template LOCATION=#{template}"
+
+exit
