@@ -12,11 +12,19 @@ begin
     gem.authors = ["Benjamin Wong"]
     # gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     gem.rdoc_options += FileList['lib/**/templates/*'].to_a.collect{|f| "--exclude=#{f}" }
+    # gem.files = FileList[
+    #         "README.rdoc"
+    # ]
+    # raise FileList['lib/**/templates/*'].to_a.collect{|f| "--exclude=#{f}" }.inspect
     # gem.rdoc_options << "--exclude='lib/**/templates/*'"
     gem.rubyforge_project = 'somatics3'
     gem.add_dependency 'will_paginate', "~> 3.0.pre2"
-    gem.add_dependency 'prawn', "0.6.3"
     gem.add_dependency 'json'
+    gem.add_dependency 'meta_search'
+    gem.add_dependency 'paper_trail'
+    gem.add_dependency 'tiny_mce'
+    gem.add_dependency 'devise'
+    # gem.add_dependency 'prawn', "0.6.3"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::RubyforgeTasks.new do |rubyforge|

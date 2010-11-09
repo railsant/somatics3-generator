@@ -62,7 +62,7 @@ module Somatics
       end
       
       def inject_somatics_filters
-        filters = ["  # has_filter :id, :integer\n", "  # has_filter :created_at, :date\n"]
+        filters = ["  has_filter :id, :integer, :default => true\n", "  has_filter :created_at, :date\n"]
         filters |= attributes.collect do |attribute|
           "  has_filter :#{attribute.name}, :#{attribute.type}\n"
         end

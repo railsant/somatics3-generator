@@ -4,14 +4,14 @@
 
 app_name = ARGV[0]
 
-puts "Somatics going to bootstrap your new #{app_name.humanize} App..."
-puts "Any problems? See https://github.com/inspiresynergy/somatics3-generator"
+puts "         Somatics going to bootstrap your new #{app_name.humanize} App..."
+puts "         Any problems? See https://github.com/inspiresynergy/somatics3-generator"
 
 
 #----------------------------------------------------------------------------
 # Set up git
 #----------------------------------------------------------------------------
-puts "setting up source control with 'git'..."
+puts "         setting up source control with 'git'..."
 # specific to Mac OS X
 append_file '.gitignore' do
   '.DS_Store'
@@ -32,7 +32,7 @@ gem 'paper_trail'
 gem 'tiny_mce'
 gem 'devise'
 
-puts "installing gems (takes a few minutes!)..."
+puts "         installing gems (takes a few minutes!)..."
 run 'bundle install'
 
 plugin 'faster_csv',
@@ -54,14 +54,14 @@ environment 'config.autoload_paths += %W(#{config.root}/lib)'
 #----------------------------------------------------------------------------
 # Remove the usual cruft
 #----------------------------------------------------------------------------
-puts "removing unneeded files..."
+puts "         removing unneeded files..."
 run 'rm public/index.html'
 run 'rm public/favicon.ico'
 run 'rm public/images/rails.png'
 run 'rm README'
 run 'touch README'
 
-puts "banning spiders from your site by changing robots.txt..."
+puts "         banning spiders from your site by changing robots.txt..."
 gsub_file 'public/robots.txt', /# User-Agent/, 'User-Agent'
 gsub_file 'public/robots.txt', /# Disallow/, 'Disallow'
 
@@ -79,7 +79,7 @@ generate "somatics:settings"
 # Create and Migrate the Database
 #----------------------------------------------------------------------------
 
-puts "create and migrate the database"
+puts "         create and migrate the database"
 rake "db:create"
 rake "db:migrate"
 rake "db:seed"
@@ -91,16 +91,16 @@ rake "db:seed"
 if yes?(%(Create Default Admin User (email:admin@somatics.com, password:somatics)?))
   rake "somatics:create_user" 
 else
-  puts "You can run rake somatics:create_user to create default user"
+  puts "         You can run rake somatics:create_user to create default user"
 end
 
 #----------------------------------------------------------------------------
 # Finish up
 #----------------------------------------------------------------------------
 
-puts "checking everything into git..."
+puts "         checking everything into git..."
 git :add => '.'
 git :commit => "-m 'modified Rails app to use Somatics'"
 
-puts "Done setting up your Rails app with Somatics."
+puts "         Done setting up your Rails app with Somatics."
 
