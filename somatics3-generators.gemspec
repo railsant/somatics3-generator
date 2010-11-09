@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Benjamin Wong"]
-  s.date = %q{2010-09-17}
+  s.date = %q{2010-09-20}
   s.description = %q{Somatics 3 generators is used to generate a resource with skeleton admin panel}
   s.email = %q{tkwong@inspiresynergy.com}
   s.executables = ["somatics", "somatify"]

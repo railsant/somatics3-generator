@@ -6,9 +6,9 @@ require 'net/http'
 require 'uri'
 require 'json'
 class GoogleTranslate
-  def self.t(text)
+  def self.t(text,to_lang = 'zh-TW')
     uri = URI.parse('http://ajax.googleapis.com/ajax/services/language/translate')
-    JSON.parse(Net::HTTP.post_form(uri, {"q" => text, "langpair" => "en|zh-TW", "v" => '1.0'}).body)['responseData']['translatedText'] rescue text.humanize
+    JSON.parse(Net::HTTP.post_form(uri, {"q" => text, "langpair" => "en|#{to_lang}", "v" => '1.0'}).body)['responseData']['translatedText'] rescue text.humanize
   end
 end
 
@@ -23,6 +23,9 @@ module Somatics
       argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
       class_option :namespace, :banner => "NAME", :type => :string, :default => 'admin'
       class_option :skip_migration,       :type => :boolean, :desc => "Don't generate a migration file for this model."
+      class_option :locales, :type => :array, :banner => "LOCALE LOCALE", :default => %w( en zh-TW ),
+                             :desc => "Supported Locales"
+
        
        def dump_generator_attribute_names
           generator_attribute_names = [
@@ -76,10 +79,10 @@ module Somatics
         end
         
         def update_locales
-          %w( en zh-TW ).each do |locale|
+          options[:locales].each do |locale|
             append_file File.join('config/locales', "#{controller_file_name}_#{locale}.yml") do
               attributes.inject('') do |str, attribute|
-                "        #{attribute.name}: #{GoogleTranslate.t attribute.name.humanize}\n"
+                "        #{attribute.name}: #{GoogleTranslate.t attribute.name.humanize, locale}\n"
               end
             end
           end
