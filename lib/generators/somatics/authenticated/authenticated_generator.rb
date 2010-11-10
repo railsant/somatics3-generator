@@ -13,6 +13,20 @@ module Somatics
         invoke 'devise'
       end
       
+      def modify_devise_validation
+        if File.exists?("app/models/#{singular_name}.rb")
+          inject_into_file "app/models/#{singular_name}.rb", :before => "  # Setup accessible" do
+            <<-RUBY
+  def password_required?
+    return false if !new_record? && password.blank? && password_confirmation.blank?
+    super
+  end
+
+            RUBY
+          end
+        end
+      end
+      
       def add_fields_to_devise_model
         invoke "migration", [%(add_name_to_#{table_name}), "name:string"]
         if File.exists?("app/models/#{singular_name}.rb")
