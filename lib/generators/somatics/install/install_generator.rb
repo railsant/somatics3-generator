@@ -22,6 +22,10 @@ module Somatics
       def javascripts
         directory "public/javascripts"
       end
+      
+      def themes
+        directory "public/themes"
+      end
 
       def base
         template 'controller_admin.rb', File.join('app/controllers/admin', 'admin_controller.rb')
@@ -56,6 +60,21 @@ namespace :somatics do
     User.find_or_create_by_name(:name => 'Admin', :password => 'somatics', :password_confirmation => 'somatics', :email => 'admin@somatics.com')
   end
 end
+          RUBY
+        end
+      end
+      
+      def add_settings
+        append_file File.join('db','seeds.rb') do 
+          <<-RUBY
+          unless Setting.find_by_name('theme')
+            s = Setting.new
+            s.name = 'theme'
+            s.category = 'General'
+            s.value = 'default'
+            s.field_type = 'string'
+            s.save!
+          end
           RUBY
         end
       end

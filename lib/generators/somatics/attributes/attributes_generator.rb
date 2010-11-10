@@ -41,7 +41,7 @@ module Somatics
           ]
        
           generator_attribute_names.each do |attr|
-            puts "%-40s %s" % ["#{attr}:", self.send(attr.to_s)]  # instance_variable_get("@#{attr.to_s}"
+            # puts "%-40s %s" % ["#{attr}:", self.send(attr.to_s)]  # instance_variable_get("@#{attr.to_s}"
           end
        
         end

@@ -60,4 +60,40 @@ module Admin::AdminHelper
       yield block
     end
   end
+  
+
+  def date_to_words(date)
+    if date == Date.today
+      "Today"
+    elsif date <= Date.today - 1
+      if date == Date.today - 1
+        "Yesterday"
+      elsif ((Date.today - 7)..(Date.today - 1)).include?(date)
+        "Last #{date.strftime("%A")}"
+      elsif ((Date.today - 14)..(Date.today - 8)).include?(date)
+        "Two #{date.strftime("%A")}s ago"
+      elsif ((Date.today - 21)..(Date.today - 15)).include?(date)
+        "Three #{date.strftime("%A")}s ago"
+      elsif ((Date.today - 29)..(Date.today - 22)).include?(date)
+        "Four #{date.strftime("%A")}s ago"
+      elsif Date.today - 30 < date
+        "More than a month ago"
+      end
+    else
+      if date == Date.today + 1
+        "Tomorrow"
+      elsif ((Date.today + 1)..(Date.today + 6)).include?(date)
+        "This coming #{date.strftime("%A")}"
+      elsif ((Date.today + 7)..(Date.today + 14)).include?(date)
+        "Next #{date.strftime("%A")}s away"
+      elsif ((Date.today + 15)..(Date.today + 21)).include?(date)
+        "Two #{date.strftime("%A")}s away"
+      elsif ((Date.today + 22)..(Date.today + 29)).include?(date)
+        "Three #{date.strftime("%A")}s away"
+      elsif Date.today + 30 > date
+        "More than a month in the future"
+      end
+    end
+  end
+
 end

@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{somatics3-generators}
-  s.version = "0.0.9"
+  s.version = "0.0.10"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Benjamin Wong"]
-  s.date = %q{2010-09-20}
+  s.date = %q{2010-11-09}
   s.description = %q{Somatics 3 generators is used to generate a resource with skeleton admin panel}
   s.email = %q{tkwong@inspiresynergy.com}
   s.executables = ["somatics", "somatify"]
@@ -27,50 +27,33 @@ Gem::Specification.new do |s|
      "bin/somatics",
      "bin/somatify",
      "lib/generators/somatics.rb",
+     "lib/generators/somatics/associated/associated_generator.rb",
+     "lib/generators/somatics/associated/templates/migration.rb",
      "lib/generators/somatics/attributes/attributes_generator.rb",
      "lib/generators/somatics/attributes/templates/migration.rb",
      "lib/generators/somatics/authenticated/authenticated_generator.rb",
-     "lib/generators/somatics/authenticated/templates/mailer.rb",
-     "lib/generators/somatics/authenticated/templates/migration.rb",
-     "lib/generators/somatics/authenticated/templates/model.rb",
-     "lib/generators/somatics/authenticated/templates/observer.rb",
-     "lib/generators/somatics/authenticated/templates/test/mailer_test.rb",
-     "lib/generators/somatics/authenticated/templates/test/model_functional_test.rb",
-     "lib/generators/somatics/authenticated/templates/test/sessions_functional_test.rb",
-     "lib/generators/somatics/authenticated/templates/test/unit_test.rb",
-     "lib/generators/somatics/authenticated/templates/test/users.yml",
+     "lib/generators/somatics/authenticated/templates/partial_form.html.erb",
      "lib/generators/somatics/authenticated_controller/authenticated_controller_generator.rb",
-     "lib/generators/somatics/authenticated_controller/templates/_model_partial.html.erb",
-     "lib/generators/somatics/authenticated_controller/templates/activation.erb",
-     "lib/generators/somatics/authenticated_controller/templates/authenticated_system.rb",
-     "lib/generators/somatics/authenticated_controller/templates/authenticated_test_helper.rb",
-     "lib/generators/somatics/authenticated_controller/templates/config/initializers/site_keys.rb",
-     "lib/generators/somatics/authenticated_controller/templates/controller.rb",
-     "lib/generators/somatics/authenticated_controller/templates/helper.rb",
+     "lib/generators/somatics/authenticated_controller/templates/locales_en.yml",
+     "lib/generators/somatics/authenticated_controller/templates/locales_zh-TW.yml",
      "lib/generators/somatics/authenticated_controller/templates/login.html.erb",
-     "lib/generators/somatics/authenticated_controller/templates/mailer.rb",
-     "lib/generators/somatics/authenticated_controller/templates/migration.rb",
-     "lib/generators/somatics/authenticated_controller/templates/model.rb",
-     "lib/generators/somatics/authenticated_controller/templates/observer.rb",
-     "lib/generators/somatics/authenticated_controller/templates/session_helper.rb",
      "lib/generators/somatics/authenticated_controller/templates/sessions_controller.rb",
-     "lib/generators/somatics/authenticated_controller/templates/signup.html.erb",
-     "lib/generators/somatics/authenticated_controller/templates/signup_notification.erb",
-     "lib/generators/somatics/authenticated_controller/templates/test/mailer_test.rb",
-     "lib/generators/somatics/authenticated_controller/templates/test/model_functional_test.rb",
-     "lib/generators/somatics/authenticated_controller/templates/test/sessions_functional_test.rb",
-     "lib/generators/somatics/authenticated_controller/templates/test/unit_test.rb",
-     "lib/generators/somatics/authenticated_controller/templates/test/users.yml",
      "lib/generators/somatics/helper/helper_generator.rb",
      "lib/generators/somatics/install/install_generator.rb",
+     "lib/generators/somatics/install/templates/config/locales/devise_zh-TW.yml",
      "lib/generators/somatics/install/templates/config/locales/somatics_en.yml",
      "lib/generators/somatics/install/templates/config/locales/somatics_zh-TW.yml",
      "lib/generators/somatics/install/templates/controller_admin.rb",
      "lib/generators/somatics/install/templates/controller_home.rb",
      "lib/generators/somatics/install/templates/helper_admin.rb",
+     "lib/generators/somatics/install/templates/initializer_paper_trail.rb",
      "lib/generators/somatics/install/templates/layout_admin.html.erb",
+     "lib/generators/somatics/install/templates/lib/active_record/diff.rb",
      "lib/generators/somatics/install/templates/lib/somatic_link_renderer.rb",
+     "lib/generators/somatics/install/templates/lib/tasks/heroku.rake",
+     "lib/generators/somatics/install/templates/lib/tasks/svn.rake",
      "lib/generators/somatics/install/templates/partial_menu.html.erb",
+     "lib/generators/somatics/install/templates/partial_versions.html.erb",
      "lib/generators/somatics/install/templates/public/images/somatics/add.png",
      "lib/generators/somatics/install/templates/public/images/somatics/arrow_collapsed.png",
      "lib/generators/somatics/install/templates/public/images/somatics/arrow_expanded.png",
@@ -166,10 +149,12 @@ Gem::Specification.new do |s|
      "lib/generators/somatics/install/templates/public/javascripts/somatics/prototype.js",
      "lib/generators/somatics/install/templates/public/javascripts/somatics/rails.js",
      "lib/generators/somatics/install/templates/public/javascripts/somatics/select_list_move.js",
+     "lib/generators/somatics/install/templates/public/stylesheets/application.css",
      "lib/generators/somatics/install/templates/public/stylesheets/somatics/base.css",
      "lib/generators/somatics/install/templates/public/stylesheets/somatics/context_menu.css",
      "lib/generators/somatics/install/templates/public/stylesheets/somatics/csshover.htc",
      "lib/generators/somatics/install/templates/public/stylesheets/somatics/jstoolbar.css",
+     "lib/generators/somatics/install/templates/public/themes/default/stylesheets/application.css",
      "lib/generators/somatics/install/templates/view_index.html.erb",
      "lib/generators/somatics/relationship/relationship_generator.rb",
      "lib/generators/somatics/relationship/templates/migration.rb",
@@ -181,7 +166,6 @@ Gem::Specification.new do |s|
      "lib/generators/somatics/scaffold/templates/show.html.erb",
      "lib/generators/somatics/scaffold_controller/USAGE",
      "lib/generators/somatics/scaffold_controller/scaffold_controller_generator.rb",
-     "lib/generators/somatics/scaffold_controller/templates/builder_index.pdf.prawn",
      "lib/generators/somatics/scaffold_controller/templates/builder_index.xls.builder",
      "lib/generators/somatics/scaffold_controller/templates/builder_index.xml.builder",
      "lib/generators/somatics/scaffold_controller/templates/controller.rb",
@@ -200,7 +184,6 @@ Gem::Specification.new do |s|
      "lib/generators/somatics/settings/settings_generator.rb",
      "lib/generators/somatics/settings_controller/USAGE",
      "lib/generators/somatics/settings_controller/settings_controller_generator.rb",
-     "lib/generators/somatics/settings_controller/templates/builder_index.pdf.prawn",
      "lib/generators/somatics/settings_controller/templates/builder_index.xls.builder",
      "lib/generators/somatics/settings_controller/templates/builder_index.xml.builder",
      "lib/generators/somatics/settings_controller/templates/controller.rb",
@@ -208,7 +191,6 @@ Gem::Specification.new do |s|
      "lib/generators/somatics/settings_controller/templates/locales_en.yml",
      "lib/generators/somatics/settings_controller/templates/locales_zh-TW.yml",
      "lib/generators/somatics/settings_controller/templates/migration.rb",
-     "lib/generators/somatics/settings_controller/templates/model.rb",
      "lib/generators/somatics/settings_controller/templates/partial_bulk.html.erb",
      "lib/generators/somatics/settings_controller/templates/partial_edit.html.erb",
      "lib/generators/somatics/settings_controller/templates/partial_form.html.erb",
@@ -226,7 +208,7 @@ Gem::Specification.new do |s|
      "test/test_somatics3-generators.rb"
   ]
   s.homepage = %q{http://github.com/inspiresynergy/somatics3-generators}
-  s.rdoc_options = ["--charset=UTF-8", "--exclude=lib/generators/somatics/attributes/templates/migration.rb", "--exclude=lib/generators/somatics/authenticated/templates/mailer.rb", "--exclude=lib/generators/somatics/authenticated/templates/migration.rb", "--exclude=lib/generators/somatics/authenticated/templates/model.rb", "--exclude=lib/generators/somatics/authenticated/templates/observer.rb", "--exclude=lib/generators/somatics/authenticated/templates/test", "--exclude=lib/generators/somatics/authenticated_controller/templates/_model_partial.html.erb", "--exclude=lib/generators/somatics/authenticated_controller/templates/activation.erb", "--exclude=lib/generators/somatics/authenticated_controller/templates/authenticated_system.rb", "--exclude=lib/generators/somatics/authenticated_controller/templates/authenticated_test_helper.rb", "--exclude=lib/generators/somatics/authenticated_controller/templates/config", "--exclude=lib/generators/somatics/authenticated_controller/templates/controller.rb", "--exclude=lib/generators/somatics/authenticated_controller/templates/helper.rb", "--exclude=lib/generators/somatics/authenticated_controller/templates/login.html.erb", "--exclude=lib/generators/somatics/authenticated_controller/templates/mailer.rb", "--exclude=lib/generators/somatics/authenticated_controller/templates/migration.rb", "--exclude=lib/generators/somatics/authenticated_controller/templates/model.rb", "--exclude=lib/generators/somatics/authenticated_controller/templates/observer.rb", "--exclude=lib/generators/somatics/authenticated_controller/templates/session_helper.rb", "--exclude=lib/generators/somatics/authenticated_controller/templates/sessions_controller.rb", "--exclude=lib/generators/somatics/authenticated_controller/templates/signup.html.erb", "--exclude=lib/generators/somatics/authenticated_controller/templates/signup_notification.erb", "--exclude=lib/generators/somatics/authenticated_controller/templates/test", "--exclude=lib/generators/somatics/install/templates/config", "--exclude=lib/generators/somatics/install/templates/controller_admin.rb", "--exclude=lib/generators/somatics/install/templates/controller_home.rb", "--exclude=lib/generators/somatics/install/templates/helper_admin.rb", "--exclude=lib/generators/somatics/install/templates/layout_admin.html.erb", "--exclude=lib/generators/somatics/install/templates/lib", "--exclude=lib/generators/somatics/install/templates/partial_menu.html.erb", "--exclude=lib/generators/somatics/install/templates/public", "--exclude=lib/generators/somatics/install/templates/view_index.html.erb", "--exclude=lib/generators/somatics/relationship/templates/migration.rb", "--exclude=lib/generators/somatics/scaffold/templates/_form.html.erb", "--exclude=lib/generators/somatics/scaffold/templates/edit.html.erb", "--exclude=lib/generators/somatics/scaffold/templates/index.html.erb", "--exclude=lib/generators/somatics/scaffold/templates/new.html.erb", "--exclude=lib/generators/somatics/scaffold/templates/show.html.erb", "--exclude=lib/generators/somatics/scaffold_controller/templates/builder_index.pdf.prawn", "--exclude=lib/generators/somatics/scaffold_controller/templates/builder_index.xls.builder", "--exclude=lib/generators/somatics/scaffold_controller/templates/builder_index.xml.builder", "--exclude=lib/generators/somatics/scaffold_controller/templates/controller.rb", "--exclude=lib/generators/somatics/scaffold_controller/templates/locales_en.yml", "--exclude=lib/generators/somatics/scaffold_controller/templates/locales_zh-TW.yml", "--exclude=lib/generators/somatics/scaffold_controller/templates/partial_bulk.html.erb", "--exclude=lib/generators/somatics/scaffold_controller/templates/partial_edit.html.erb", "--exclude=lib/generators/somatics/scaffold_controller/templates/partial_form.html.erb", "--exclude=lib/generators/somatics/scaffold_controller/templates/partial_list.html.erb", "--exclude=lib/generators/somatics/scaffold_controller/templates/partial_menu.html.erb", "--exclude=lib/generators/somatics/scaffold_controller/templates/partial_show.html.erb", "--exclude=lib/generators/somatics/scaffold_controller/templates/view_edit.html.erb", "--exclude=lib/generators/somatics/scaffold_controller/templates/view_index.html.erb", "--exclude=lib/generators/somatics/scaffold_controller/templates/view_new.html.erb", "--exclude=lib/generators/somatics/scaffold_controller/templates/view_show.html.erb", "--exclude=lib/generators/somatics/settings_controller/templates/builder_index.pdf.prawn", "--exclude=lib/generators/somatics/settings_controller/templates/builder_index.xls.builder", "--exclude=lib/generators/somatics/settings_controller/templates/builder_index.xml.builder", "--exclude=lib/generators/somatics/settings_controller/templates/controller.rb", "--exclude=lib/generators/somatics/settings_controller/templates/helper.rb", "--exclude=lib/generators/somatics/settings_controller/templates/locales_en.yml", "--exclude=lib/generators/somatics/settings_controller/templates/locales_zh-TW.yml", "--exclude=lib/generators/somatics/settings_controller/templates/migration.rb", "--exclude=lib/generators/somatics/settings_controller/templates/model.rb", "--exclude=lib/generators/somatics/settings_controller/templates/partial_bulk.html.erb", "--exclude=lib/generators/somatics/settings_controller/templates/partial_edit.html.erb", "--exclude=lib/generators/somatics/settings_controller/templates/partial_form.html.erb", "--exclude=lib/generators/somatics/settings_controller/templates/partial_list.html.erb", "--exclude=lib/generators/somatics/settings_controller/templates/partial_menu.html.erb", "--exclude=lib/generators/somatics/settings_controller/templates/partial_show.html.erb", "--exclude=lib/generators/somatics/settings_controller/templates/view_edit.html.erb", "--exclude=lib/generators/somatics/settings_controller/templates/view_index.html.erb", "--exclude=lib/generators/somatics/settings_controller/templates/view_new.html.erb", "--exclude=lib/generators/somatics/settings_controller/templates/view_show.html.erb"]
+  s.rdoc_options = ["--charset=UTF-8", "--exclude=lib/generators/somatics/associated/templates/migration.rb", "--exclude=lib/generators/somatics/attributes/templates/migration.rb", "--exclude=lib/generators/somatics/authenticated/templates/partial_form.html.erb", "--exclude=lib/generators/somatics/authenticated_controller/templates/config", "--exclude=lib/generators/somatics/authenticated_controller/templates/locales_en.yml", "--exclude=lib/generators/somatics/authenticated_controller/templates/locales_zh-TW.yml", "--exclude=lib/generators/somatics/authenticated_controller/templates/login.html.erb", "--exclude=lib/generators/somatics/authenticated_controller/templates/sessions_controller.rb", "--exclude=lib/generators/somatics/install/templates/config", "--exclude=lib/generators/somatics/install/templates/controller_admin.rb", "--exclude=lib/generators/somatics/install/templates/controller_home.rb", "--exclude=lib/generators/somatics/install/templates/helper_admin.rb", "--exclude=lib/generators/somatics/install/templates/initializer_paper_trail.rb", "--exclude=lib/generators/somatics/install/templates/layout_admin.html.erb", "--exclude=lib/generators/somatics/install/templates/lib", "--exclude=lib/generators/somatics/install/templates/partial_menu.html.erb", "--exclude=lib/generators/somatics/install/templates/partial_versions.html.erb", "--exclude=lib/generators/somatics/install/templates/public", "--exclude=lib/generators/somatics/install/templates/view_index.html.erb", "--exclude=lib/generators/somatics/relationship/templates/migration.rb", "--exclude=lib/generators/somatics/scaffold/templates/_form.html.erb", "--exclude=lib/generators/somatics/scaffold/templates/edit.html.erb", "--exclude=lib/generators/somatics/scaffold/templates/index.html.erb", "--exclude=lib/generators/somatics/scaffold/templates/new.html.erb", "--exclude=lib/generators/somatics/scaffold/templates/show.html.erb", "--exclude=lib/generators/somatics/scaffold_controller/templates/builder_index.xls.builder", "--exclude=lib/generators/somatics/scaffold_controller/templates/builder_index.xml.builder", "--exclude=lib/generators/somatics/scaffold_controller/templates/controller.rb", "--exclude=lib/generators/somatics/scaffold_controller/templates/locales_en.yml", "--exclude=lib/generators/somatics/scaffold_controller/templates/locales_zh-TW.yml", "--exclude=lib/generators/somatics/scaffold_controller/templates/partial_bulk.html.erb", "--exclude=lib/generators/somatics/scaffold_controller/templates/partial_edit.html.erb", "--exclude=lib/generators/somatics/scaffold_controller/templates/partial_form.html.erb", "--exclude=lib/generators/somatics/scaffold_controller/templates/partial_list.html.erb", "--exclude=lib/generators/somatics/scaffold_controller/templates/partial_menu.html.erb", "--exclude=lib/generators/somatics/scaffold_controller/templates/partial_show.html.erb", "--exclude=lib/generators/somatics/scaffold_controller/templates/view_edit.html.erb", "--exclude=lib/generators/somatics/scaffold_controller/templates/view_index.html.erb", "--exclude=lib/generators/somatics/scaffold_controller/templates/view_new.html.erb", "--exclude=lib/generators/somatics/scaffold_controller/templates/view_show.html.erb", "--exclude=lib/generators/somatics/settings_controller/templates/builder_index.xls.builder", "--exclude=lib/generators/somatics/settings_controller/templates/builder_index.xml.builder", "--exclude=lib/generators/somatics/settings_controller/templates/controller.rb", "--exclude=lib/generators/somatics/settings_controller/templates/helper.rb", "--exclude=lib/generators/somatics/settings_controller/templates/locales_en.yml", "--exclude=lib/generators/somatics/settings_controller/templates/locales_zh-TW.yml", "--exclude=lib/generators/somatics/settings_controller/templates/migration.rb", "--exclude=lib/generators/somatics/settings_controller/templates/partial_bulk.html.erb", "--exclude=lib/generators/somatics/settings_controller/templates/partial_edit.html.erb", "--exclude=lib/generators/somatics/settings_controller/templates/partial_form.html.erb", "--exclude=lib/generators/somatics/settings_controller/templates/partial_list.html.erb", "--exclude=lib/generators/somatics/settings_controller/templates/partial_menu.html.erb", "--exclude=lib/generators/somatics/settings_controller/templates/partial_show.html.erb", "--exclude=lib/generators/somatics/settings_controller/templates/view_edit.html.erb", "--exclude=lib/generators/somatics/settings_controller/templates/view_index.html.erb", "--exclude=lib/generators/somatics/settings_controller/templates/view_new.html.erb", "--exclude=lib/generators/somatics/settings_controller/templates/view_show.html.erb"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{somatics3}
   s.rubygems_version = %q{1.3.7}
@@ -242,17 +224,26 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<will_paginate>, ["~> 3.0.pre2"])
-      s.add_runtime_dependency(%q<prawn>, ["= 0.6.3"])
       s.add_runtime_dependency(%q<json>, [">= 0"])
+      s.add_runtime_dependency(%q<meta_search>, [">= 0"])
+      s.add_runtime_dependency(%q<paper_trail>, [">= 0"])
+      s.add_runtime_dependency(%q<tiny_mce>, [">= 0"])
+      s.add_runtime_dependency(%q<devise>, [">= 0"])
     else
       s.add_dependency(%q<will_paginate>, ["~> 3.0.pre2"])
-      s.add_dependency(%q<prawn>, ["= 0.6.3"])
       s.add_dependency(%q<json>, [">= 0"])
+      s.add_dependency(%q<meta_search>, [">= 0"])
+      s.add_dependency(%q<paper_trail>, [">= 0"])
+      s.add_dependency(%q<tiny_mce>, [">= 0"])
+      s.add_dependency(%q<devise>, [">= 0"])
     end
   else
     s.add_dependency(%q<will_paginate>, ["~> 3.0.pre2"])
-    s.add_dependency(%q<prawn>, ["= 0.6.3"])
     s.add_dependency(%q<json>, [">= 0"])
+    s.add_dependency(%q<meta_search>, [">= 0"])
+    s.add_dependency(%q<paper_trail>, [">= 0"])
+    s.add_dependency(%q<tiny_mce>, [">= 0"])
+    s.add_dependency(%q<devise>, [">= 0"])
   end
 end
 
