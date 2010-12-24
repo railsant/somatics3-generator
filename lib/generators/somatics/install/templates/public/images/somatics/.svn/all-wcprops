@@ -1,527 +1,527 @@
 K 25
 svn:wc:ra_dav:version-url
-V 64
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images
+V 91
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics
 END
 time.png
 K 25
 svn:wc:ra_dav:version-url
-V 73
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/time.png
+V 100
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/time.png
 END
 task_parent_end.png
 K 25
 svn:wc:ra_dav:version-url
-V 84
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/task_parent_end.png
+V 111
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/task_parent_end.png
 END
 arrow_expanded.png
 K 25
 svn:wc:ra_dav:version-url
-V 83
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/arrow_expanded.png
+V 110
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/arrow_expanded.png
 END
 bullet_toggle_minus.png
 K 25
 svn:wc:ra_dav:version-url
-V 88
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/bullet_toggle_minus.png
+V 115
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/bullet_toggle_minus.png
 END
 warning.png
 K 25
 svn:wc:ra_dav:version-url
-V 76
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/warning.png
+V 103
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/warning.png
 END
 reload.png
 K 25
 svn:wc:ra_dav:version-url
-V 75
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/reload.png
+V 102
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/reload.png
 END
 move.png
 K 25
 svn:wc:ra_dav:version-url
-V 73
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/move.png
+V 100
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/move.png
 END
 fav_off.png
 K 25
 svn:wc:ra_dav:version-url
-V 76
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/fav_off.png
+V 103
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/fav_off.png
 END
 ticket_note.png
 K 25
 svn:wc:ra_dav:version-url
-V 80
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/ticket_note.png
+V 107
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/ticket_note.png
 END
 copy.png
 K 25
 svn:wc:ra_dav:version-url
-V 73
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/copy.png
+V 100
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/copy.png
 END
 zoom_in.png
 K 25
 svn:wc:ra_dav:version-url
-V 76
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/zoom_in.png
+V 103
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/zoom_in.png
 END
 news.png
 K 25
 svn:wc:ra_dav:version-url
-V 73
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/news.png
+V 100
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/news.png
 END
 bullet_end.png
 K 25
 svn:wc:ra_dav:version-url
-V 79
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/bullet_end.png
+V 106
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/bullet_end.png
 END
 external.png
 K 25
 svn:wc:ra_dav:version-url
-V 77
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/external.png
+V 104
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/external.png
 END
 lightning.png
 K 25
 svn:wc:ra_dav:version-url
-V 78
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/lightning.png
+V 105
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/lightning.png
 END
 footer-bg.png
 K 25
 svn:wc:ra_dav:version-url
-V 78
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/footer-bg.png
+V 105
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/footer-bg.png
 END
 default.png
 K 25
 svn:wc:ra_dav:version-url
-V 76
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/default.png
+V 103
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/default.png
 END
 edit.png
 K 25
 svn:wc:ra_dav:version-url
-V 73
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/edit.png
+V 100
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/edit.png
 END
 package.png
 K 25
 svn:wc:ra_dav:version-url
-V 76
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/package.png
+V 103
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/package.png
 END
 folder_open.png
 K 25
 svn:wc:ra_dav:version-url
-V 80
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/folder_open.png
+V 107
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/folder_open.png
 END
 link.png
 K 25
 svn:wc:ra_dav:version-url
-V 73
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/link.png
+V 100
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/link.png
 END
 history.png
 K 25
 svn:wc:ra_dav:version-url
-V 76
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/history.png
-END
-table_multiple.png
-K 25
-svn:wc:ra_dav:version-url
-V 83
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/table_multiple.png
+V 103
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/history.png
 END
 delete.png
 K 25
 svn:wc:ra_dav:version-url
-V 75
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/delete.png
+V 102
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/delete.png
+END
+table_multiple.png
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/table_multiple.png
 END
 feed.png
 K 25
 svn:wc:ra_dav:version-url
-V 73
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/feed.png
+V 100
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/feed.png
 END
 task_done.png
 K 25
 svn:wc:ra_dav:version-url
-V 78
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/task_done.png
+V 105
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/task_done.png
 END
 pdf.png
 K 25
 svn:wc:ra_dav:version-url
-V 72
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/pdf.png
+V 99
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/pdf.png
 END
 text_list_bullets.png
 K 25
 svn:wc:ra_dav:version-url
-V 86
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/text_list_bullets.png
+V 113
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/text_list_bullets.png
 END
 rails.png
 K 25
 svn:wc:ra_dav:version-url
-V 74
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/rails.png
+V 101
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/rails.png
 END
 bullet_arrow_left.png
 K 25
 svn:wc:ra_dav:version-url
-V 86
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/bullet_arrow_left.png
+V 113
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/bullet_arrow_left.png
 END
 bullet_go.png
 K 25
 svn:wc:ra_dav:version-url
-V 78
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/bullet_go.png
+V 105
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/bullet_go.png
 END
 sort_asc.png
 K 25
 svn:wc:ra_dav:version-url
-V 77
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/sort_asc.png
+V 104
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/sort_asc.png
 END
 toggle_check.png
 K 25
 svn:wc:ra_dav:version-url
-V 81
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/toggle_check.png
+V 108
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/toggle_check.png
 END
 bullet_diamond.png
 K 25
 svn:wc:ra_dav:version-url
-V 83
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/bullet_diamond.png
+V 110
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/bullet_diamond.png
 END
 comments.png
 K 25
 svn:wc:ra_dav:version-url
-V 77
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/comments.png
+V 104
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/comments.png
 END
 footer-left.png
 K 25
 svn:wc:ra_dav:version-url
-V 80
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/footer-left.png
+V 107
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/footer-left.png
 END
 php.png
 K 25
 svn:wc:ra_dav:version-url
-V 72
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/php.png
+V 99
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/php.png
 END
 attachment.png
 K 25
 svn:wc:ra_dav:version-url
-V 79
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/attachment.png
+V 106
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/attachment.png
 END
 textfield.png
 K 25
 svn:wc:ra_dav:version-url
-V 78
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/textfield.png
+V 105
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/textfield.png
 END
 bullet_toggle_plus.png
 K 25
 svn:wc:ra_dav:version-url
-V 87
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/bullet_toggle_plus.png
+V 114
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/bullet_toggle_plus.png
 END
 unlock.png
 K 25
 svn:wc:ra_dav:version-url
-V 75
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/unlock.png
+V 102
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/unlock.png
 END
 group.png
 K 25
 svn:wc:ra_dav:version-url
-V 74
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/group.png
+V 101
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/group.png
 END
 save.png
 K 25
 svn:wc:ra_dav:version-url
-V 73
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/save.png
+V 100
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/save.png
 END
 plugin.png
 K 25
 svn:wc:ra_dav:version-url
-V 75
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/plugin.png
+V 102
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/plugin.png
 END
 loading.gif
 K 25
 svn:wc:ra_dav:version-url
-V 76
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/loading.gif
+V 103
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/loading.gif
 END
 milestone.png
 K 25
 svn:wc:ra_dav:version-url
-V 78
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/milestone.png
+V 105
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/milestone.png
 END
 draft.png
 K 25
 svn:wc:ra_dav:version-url
-V 74
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/draft.png
+V 101
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/draft.png
 END
 content-left.png
 K 25
 svn:wc:ra_dav:version-url
-V 81
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/content-left.png
+V 108
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/content-left.png
 END
 exclamation.png
 K 25
 svn:wc:ra_dav:version-url
-V 80
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/exclamation.png
+V 107
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/exclamation.png
 END
 ticket_go.png
 K 25
 svn:wc:ra_dav:version-url
-V 78
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/ticket_go.png
+V 105
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/ticket_go.png
 END
 footer-right.png
 K 25
 svn:wc:ra_dav:version-url
-V 81
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/footer-right.png
+V 108
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/footer-right.png
 END
 report.png
 K 25
 svn:wc:ra_dav:version-url
-V 75
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/report.png
+V 102
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/report.png
 END
 folder.png
 K 25
 svn:wc:ra_dav:version-url
-V 75
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/folder.png
+V 102
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/folder.png
 END
 fav.png
 K 25
 svn:wc:ra_dav:version-url
-V 72
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/fav.png
+V 99
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/fav.png
 END
 document.png
 K 25
 svn:wc:ra_dav:version-url
-V 77
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/document.png
+V 104
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/document.png
 END
 true.png
 K 25
 svn:wc:ra_dav:version-url
-V 73
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/true.png
+V 100
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/true.png
 END
 csharp.png
 K 25
 svn:wc:ra_dav:version-url
-V 75
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/csharp.png
+V 102
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/csharp.png
 END
 c.png
 K 25
 svn:wc:ra_dav:version-url
-V 70
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/c.png
+V 97
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/c.png
 END
 cancel.png
 K 25
 svn:wc:ra_dav:version-url
-V 75
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/cancel.png
+V 102
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/cancel.png
 END
 content-right.png
 K 25
 svn:wc:ra_dav:version-url
-V 82
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/content-right.png
+V 109
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/content-right.png
 END
 help.png
 K 25
 svn:wc:ra_dav:version-url
-V 73
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/help.png
+V 100
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/help.png
 END
 add.png
 K 25
 svn:wc:ra_dav:version-url
-V 72
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/add.png
+V 99
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/add.png
 END
 projects.png
 K 25
 svn:wc:ra_dav:version-url
-V 77
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/projects.png
+V 104
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/projects.png
 END
 stats.png
 K 25
 svn:wc:ra_dav:version-url
-V 74
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/stats.png
+V 101
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/stats.png
 END
 bullet_arrow_right.png
 K 25
 svn:wc:ra_dav:version-url
-V 87
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/bullet_arrow_right.png
+V 114
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/bullet_arrow_right.png
 END
 xml.png
 K 25
 svn:wc:ra_dav:version-url
-V 72
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/xml.png
+V 99
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/xml.png
 END
 locked.png
 K 25
 svn:wc:ra_dav:version-url
-V 75
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/locked.png
+V 102
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/locked.png
 END
 changeset.png
 K 25
 svn:wc:ra_dav:version-url
-V 78
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/changeset.png
+V 105
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/changeset.png
 END
 comment.png
 K 25
 svn:wc:ra_dav:version-url
-V 76
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/comment.png
+V 103
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/comment.png
 END
 zip.png
 K 25
 svn:wc:ra_dav:version-url
-V 72
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/zip.png
+V 99
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/zip.png
 END
 time_add.png
 K 25
 svn:wc:ra_dav:version-url
-V 77
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/time_add.png
+V 104
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/time_add.png
 END
 task_late.png
 K 25
 svn:wc:ra_dav:version-url
-V 78
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/task_late.png
+V 105
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/task_late.png
 END
 wiki_edit.png
 K 25
 svn:wc:ra_dav:version-url
-V 78
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/wiki_edit.png
+V 105
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/wiki_edit.png
 END
 duplicate.png
 K 25
 svn:wc:ra_dav:version-url
-V 78
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/duplicate.png
+V 105
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/duplicate.png
 END
 database_key.png
 K 25
 svn:wc:ra_dav:version-url
-V 81
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/database_key.png
+V 108
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/database_key.png
 END
 user.png
 K 25
 svn:wc:ra_dav:version-url
-V 73
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/user.png
+V 100
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/user.png
 END
 arrow_collapsed.png
 K 25
 svn:wc:ra_dav:version-url
-V 84
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/arrow_collapsed.png
+V 111
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/arrow_collapsed.png
 END
 ruby.png
 K 25
 svn:wc:ra_dav:version-url
-V 73
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/ruby.png
+V 100
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/ruby.png
 END
 image.png
 K 25
 svn:wc:ra_dav:version-url
-V 74
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/image.png
+V 101
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/image.png
 END
 ticket.png
 K 25
 svn:wc:ra_dav:version-url
-V 75
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/ticket.png
+V 102
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/ticket.png
 END
 message.png
 K 25
 svn:wc:ra_dav:version-url
-V 76
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/message.png
+V 103
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/message.png
 END
 text.png
 K 25
 svn:wc:ra_dav:version-url
-V 73
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/text.png
+V 100
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/text.png
 END
 sort_desc.png
 K 25
 svn:wc:ra_dav:version-url
-V 78
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/sort_desc.png
+V 105
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/sort_desc.png
 END
 openid-bg.gif
 K 25
 svn:wc:ra_dav:version-url
-V 78
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/openid-bg.gif
+V 105
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/openid-bg.gif
 END
 task_todo.png
 K 25
 svn:wc:ra_dav:version-url
-V 78
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/task_todo.png
+V 105
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/task_todo.png
 END
 ticket_edit.png
 K 25
 svn:wc:ra_dav:version-url
-V 80
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/ticket_edit.png
+V 107
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/ticket_edit.png
 END
 ticket_checked.png
 K 25
 svn:wc:ra_dav:version-url
-V 83
-/svn/somatics/!svn/ver/25/trunk/somatics_generator/public/images/ticket_checked.png
+V 110
+/somatics/!svn/ver/2/trunk/lib/generators/somatics/install/templates/public/images/somatics/ticket_checked.png
 END

@@ -1,13 +1,13 @@
 10
 
 dir
-42
-http://inspiresynergy.svnrepository.com/svn/somatics/trunk/somatics_generator/public/stylesheets
-http://inspiresynergy.svnrepository.com/svn/somatics
+2
+http://svn.inspiresynergy.com/somatics/trunk/lib/generators/somatics/install/templates/public/stylesheets
+http://svn.inspiresynergy.com/somatics
 
 
 
-2010-08-02T06:40:12.750052Z
+2010-12-24T10:18:10.101254Z
 2
 plor
 
@@ -24,20 +24,22 @@ plor
 
 
 
-babe535c-5a43-4401-99df-532943dafaf4
+4de09d5d-b31d-4531-96d2-12aa30ea8b2f
 
-admin.css
+somatics
+dir
+
+application.css
 file
 
 
 
 
-2010-08-04T08:42:11.000000Z
-bde07044c3855dc6339d66d930b561cc
-2010-08-02T06:40:12.750052Z
+2010-12-24T10:09:38.000000Z
+64712e7e28fc229681e41323c64bce1a
+2010-12-24T10:18:10.101254Z
 2
 plor
-has-props
 
 
 
@@ -58,107 +60,6 @@ has-props
 
 
 
-35701
-
-context_menu.css
-file
 
-
-
-
-2010-08-04T08:42:11.000000Z
-7242dadc837d4861d71c80661cd6981e
-2010-08-02T06:40:12.750052Z
-2
-plor
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1809
-
-jstoolbar.css
-file
-
-
-
-
-2010-08-04T08:42:11.000000Z
-ace28e67afa938f7126abca496e2c0c6
-2010-08-02T06:40:12.750052Z
-2
-plor
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1997
-
-csshover.htc
-file
-
-
-
-
-2010-08-04T08:42:11.000000Z
-c368984e42c19a761a486b9cfada48ef
-2010-08-02T06:40:12.750052Z
-2
-plor
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4240
+31844
 

@@ -1,13 +1,13 @@
 10
 
 dir
-42
-http://inspiresynergy.svnrepository.com/svn/somatics/trunk/somatics_generator/public
-http://inspiresynergy.svnrepository.com/svn/somatics
+2
+http://svn.inspiresynergy.com/somatics/trunk/lib/generators/somatics/install/templates/public
+http://svn.inspiresynergy.com/somatics
 
 
 
-2010-08-02T06:40:12.750052Z
+2010-12-24T10:18:10.101254Z
 2
 plor
 
@@ -24,9 +24,12 @@ plor
 
 
 
-babe535c-5a43-4401-99df-532943dafaf4
+4de09d5d-b31d-4531-96d2-12aa30ea8b2f
 
 images
+dir
+
+themes
 dir
 
 javascripts
